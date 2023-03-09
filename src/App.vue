@@ -10,9 +10,9 @@ import Footer from './components/Footer.vue'
 <template>
   <div class="main-container">
    
-   
+        <Header></Header>
     <div class="components-container">
-      <Header></Header>
+ 
     
       <RouterView />
     </div>
@@ -29,10 +29,10 @@ import Footer from './components/Footer.vue'
   width: 100%;
 }
 .components-container {
-  min-height: 80vh;
-  display: flex;
   flex-direction: column;
   padding-bottom: 10vh;
+  min-height: 80vh;
+
 }
 .filter-buttons{
   display: flex;
