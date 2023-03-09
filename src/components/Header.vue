@@ -4,7 +4,9 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div class="container">
+
     <header class="margin-content">
+
       <router-link to="/">
         <img src="../assets/ic_back_grey@3x.png" />
       </router-link>
@@ -14,6 +16,7 @@ import { RouterLink } from 'vue-router'
       <RouterLink to="/create-new-listing">
         <img src="../assets/ic_plus_grey@3x.png" />
       </RouterLink>
+      
     </header>
   </div>
 </template>

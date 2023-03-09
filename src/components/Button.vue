@@ -10,7 +10,7 @@ button {
   width: 100%;
   height: 5vh;
   border: none;
-  color: #e8e8e8;
+  color: var( --element-tertiary-color);
   border-radius: 10px 10px 10px 10px;
 }
 

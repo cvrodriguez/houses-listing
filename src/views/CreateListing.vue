@@ -5,77 +5,76 @@ import Button from '../components/Button.vue'
 <template>
   <div class="margin-content">
     <div class="container">
-    <div class="form">
-      <div class="control-field">
-        <label for="">Street name*</label>
-        <input type="text" placeholder="Enter the street name" />
-      </div>
-      <div class="horizontal-group-control-field">
+      <div class="form">
         <div class="control-field">
-          <label for="">House number*</label>
-          <input type="text" placeholder="Enter house number" />
+          <label for="">Street name*</label>
+          <input type="text" placeholder="Enter the street name" />
+        </div>
+        <div class="horizontal-group-control-field">
+          <div class="control-field">
+            <label for="">House number*</label>
+            <input type="text" placeholder="Enter house number" />
+          </div>
+          <div class="control-field">
+            <label for="">Addition (optional)</label>
+            <input type="text" placeholder="e.g.A" />
+          </div>
         </div>
         <div class="control-field">
-          <label for="">Addition (optional)</label>
-          <input type="text" placeholder="e.g.A" />
-        </div>
-      </div>
-      <div class="control-field">
-        <label for="">Post code*</label>
-        <input type="text" placeholder="e.g. 1000A" />
-      </div>
-      <div class="control-field">
-        <label for="">City*</label>
-        <input type="text" placeholder="e.g. Utrecht" />
-      </div>
-      <div class="control-field">
-        <label>Upload picture (PNG or JPG)*</label>
-        <label for="file-upload" class="custom-file-upload">
-          <img src="../assets/ic_plus_grey@3x.png" alt="" />
-        </label>
-        <input id="file-upload" type="file" />
-      </div>
-      <div class="control-field">
-        <label for="">Price*</label>
-        <input type="text" placeholder="e.g. $150.000" />
-      </div>
-      <div class="horizontal-group-control-field">
-        <div class="control-field">
-          <label for="">Size*</label>
-          <input type="text" placeholder="e.g. 60m2" />
+          <label for="">Post code*</label>
+          <input type="text" placeholder="e.g. 1000A" />
         </div>
         <div class="control-field">
-          <label for="">Garage*</label>
-          <select name="" id="">
-            <option value="">Select</option>
-            <option value="">Yes</option>
-            <option value="">No</option>
-          </select>
-        </div>
-      </div>
-      <div class="horizontal-group-control-field">
-        <div class="control-field">
-          <label for="">Bedrooms*</label>
-          <input type="text" placeholder="Enter amount" />
+          <label for="">City*</label>
+          <input type="text" placeholder="e.g. Utrecht" />
         </div>
         <div class="control-field">
-          <label for="">Bathrooms*</label>
-          <input type="text" placeholder="Enter amount" />
+          <label>Upload picture (PNG or JPG)*</label>
+          <label for="file-upload" class="custom-file-upload">
+            <img src="../assets/ic_plus_grey@3x.png" alt="" />
+          </label>
+          <input id="file-upload" type="file" />
         </div>
+        <div class="control-field">
+          <label for="">Price*</label>
+          <input type="text" placeholder="e.g. $150.000" />
+        </div>
+        <div class="horizontal-group-control-field">
+          <div class="control-field">
+            <label for="">Size*</label>
+            <input type="text" placeholder="e.g. 60m2" />
+          </div>
+          <div class="control-field">
+            <label for="">Garage*</label>
+            <select name="" id="">
+              <option value="">Select</option>
+              <option value="">Yes</option>
+              <option value="">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="horizontal-group-control-field">
+          <div class="control-field">
+            <label for="">Bedrooms*</label>
+            <input type="text" placeholder="Enter amount" />
+          </div>
+          <div class="control-field">
+            <label for="">Bathrooms*</label>
+            <input type="text" placeholder="Enter amount" />
+          </div>
+        </div>
+        <div class="control-field">
+          <label for="">Construction date*</label>
+          <input type="text" placeholder="e.g. 1900" />
+        </div>
+        <div class="control-field">
+          <label for="">Description*</label>
+          <textarea placeholder="Enter description" rows="10px" />
+        </div>
+        <Button class="post-primary">Post</Button>
       </div>
-      <div class="control-field">
-        <label for="">Construction date*</label>
-        <input type="text" placeholder="e.g. 1900" />
-      </div>
-      <div class="control-field">
-        <label for="">Description*</label>
-        <textarea placeholder="Enter description" rows="10px" />
-      </div>
-      <Button class="post-primary">Post</Button>
     </div>
   </div>
-  </div>
- 
 </template>
 
 

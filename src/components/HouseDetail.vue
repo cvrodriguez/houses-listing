@@ -2,12 +2,10 @@
 </script>
 
 <template>
-
- <div class="house-imagen-background"></div>
+  <div class="house-imagen-background"></div>
 
   <div class="container">
-   
-    <div>
+    
       <h1>Stokvisstraat 132</h1>
       <div class="field-style">
         <img src="../assets/ic_location@3x.png" alt="" />
@@ -35,16 +33,13 @@
         <p for="">Yes</p>
       </div>
       <p>
-        It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing Lorem Ipsum passages, and more recently with desktop publishing software like
-        Aldus PageMaker including versions of Lorem Ipsum.
+        It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of
+        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+        software like Aldus PageMaker including versions of Lorem Ipsum.
       </p>
     </div>
   
-
-  </div>
- 
 </template>
 
 

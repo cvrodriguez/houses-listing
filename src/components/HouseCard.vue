@@ -1,11 +1,13 @@
 
 <script setup>
 </script>
+
 <template>
   <div class="container">
     <router-link to="/detail-listing">
       <div class="img-container"></div>
     </router-link>
+
     <div class="inf-container">
       <div class="title-and-icos">
         <h2>Stokvisstraat 132</h2>
@@ -29,8 +31,6 @@
     </div>
   </div>
 </template>
-
-
 
 
 <style scoped>

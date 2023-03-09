@@ -1,25 +1,21 @@
 <script setup>
 import Header from './components/Header.vue'
-// import Button from './components/Button.vue'
 import Footer from './components/Footer.vue'
-// import Search from './components/Search.vue'
-// import Menssage from './components/Message.vue'
-// import HouseCard from './components/HouseCard.vue'
+
 </script>
 
 <template>
   <div class="main-container">
-   
-        <Header></Header>
+
+    <Header></Header>
+
     <div class="components-container">
- 
-    
       <RouterView />
     </div>
-    
-    <Footer class="footer"></Footer>
+
+    <Footer></Footer>
+
   </div>
- 
 </template>
 
 
@@ -32,9 +28,8 @@ import Footer from './components/Footer.vue'
   flex-direction: column;
   padding-bottom: 10vh;
   min-height: 80vh;
-
 }
-.filter-buttons{
+.filter-buttons {
   display: flex;
 }
 </style>

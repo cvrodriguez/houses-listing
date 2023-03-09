@@ -10,12 +10,11 @@
 </template>
 
 <style  scoped>
-
 .container {
   display: flex;
   align-items: center;
   height: 5vh;
-  background: #E8E8E8;
+  background: var( --element-tertiary-color);
   border-radius: 8px;
   margin-bottom: 20px;
 }
@@ -29,8 +28,9 @@ input {
   display: flex;
   justify-content: space-between;
   width: 80%;
-  background: #E8E8E8;
+  background: var( --element-tertiary-color);
 }
-input:-webkit-autofill{ box-shadow: 0 0 0px 1000px  #E8E8E8 inset; }
-
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px var( --element-tertiary-color) inset;
+}
 </style>
