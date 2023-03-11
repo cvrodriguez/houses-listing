@@ -1,13 +1,22 @@
 <script setup>
 import Button from '../components/Button.vue'
 import BackNavegation from '../components/BackNavegation.vue'
+
+import { onMounted } from 'vue'
+import {useHeaderNavStore} from '../stores/header-nav'
+
+   const headerNavStore = useHeaderNavStore()
+
+   onMounted(() => {
+    headerNavStore.title= 'Create new listing'
+   })
 </script>
 
 <template>
   <div class="margin-content">
     <div class="title">
       <BackNavegation></BackNavegation>
-      <h1>Create new listing</h1>
+      <h1>{{headerNavStore.title }}</h1>
     </div>
     <div class="container">
       <div class="form">
@@ -173,6 +182,5 @@ textarea {
   .title {
     display: block;
   }
- 
 }
 </style>

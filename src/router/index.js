@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'listing ',
+      name: 'listing',
       component: Listing
     },
     {

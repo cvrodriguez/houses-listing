@@ -2,14 +2,23 @@
 import Button from '../components/Button.vue'
 import Search from '../components/Search.vue'
 import HouseCard from '../components/HouseCard.vue'
-import EmptyList from '../components/EmptyList.vue';
+import EmptyList from '../components/EmptyList.vue'
+
+import { onMounted } from 'vue'
+import { useHeaderNavStore } from '../stores/header-nav'
+
+const headerNavStore = useHeaderNavStore()
+
+onMounted(() => {
+  headerNavStore.title = 'Houses'
+})
 </script>
 
 <template >
   <div>
     <div class="margin-content">
       <div class="desktop-title-and-create-button">
-        <h1>Houses</h1>
+        <h1>{{ headerNavStore.title }}</h1>
         <router-link to="/create-new-listing">
           <Button class="post-primary button-create">+ CREATE NEW </Button>
         </router-link>
@@ -17,13 +26,13 @@ import EmptyList from '../components/EmptyList.vue';
       <div class="filter-section">
         <Search class="search-filter"></Search>
         <div class="filter-buttons">
-          <Button class="primary button ">Price</Button>
+          <Button class="primary button">Price</Button>
           <Button class="secondary button">Size</Button>
         </div>
       </div>
 
       <HouseCard></HouseCard>
-     <!-- <EmptyList></EmptyList> -->
+      <!-- <EmptyList></EmptyList> -->
     </div>
   </div>
 </template>
@@ -60,9 +69,8 @@ import EmptyList from '../components/EmptyList.vue';
   .filter-buttons .button {
     width: 8rem;
   }
-  .search-filter{
+  .search-filter {
     width: 50%;
-    
   }
 }
 </style>

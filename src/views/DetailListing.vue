@@ -2,7 +2,16 @@
 import HouseDetail from '../components/HouseDetail.vue'
 import houseCard from '../components/HouseCard.vue'
 import BackNavegation from '../components/BackNavegation.vue'
-import HouseDelete from '../components/HouseDelete.vue'
+// import HouseDelete from '../components/HouseDelete.vue'
+
+import { onMounted } from 'vue'
+import {useHeaderNavStore} from '../stores/header-nav'
+
+const headerNavStore = useHeaderNavStore()
+
+onMounted(() => {
+ headerNavStore.title= ''
+})
 </script>
 
 <template>
