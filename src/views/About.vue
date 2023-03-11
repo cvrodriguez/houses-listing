@@ -14,6 +14,7 @@
         passages, and more recently with desktop publishing software like Aldus PageMaker including
         versions of Lorem Ipsum.
       </p>
+
       <p>
         Various versions have evolved over the years, sometimes by accident, sometimes on purpose
         (injected humour and the like).
@@ -28,30 +29,37 @@
         <p>By DTT</p>
         <a href="https://www.d-tt.nl/">www.d-tt.nl</a>
       </div>
-
     </div>
   </div>
 </template>
 
 
 <style scoped>
-p {
-  margin-bottom: 0;
+.sign p {
+  margin: 0;
   text-align: justify;
 }
 a {
   text-decoration: none;
 }
 img {
-  width: 10vh;
-  height: 4vh;
-  margin-top: 10px;
+  width: 7rem;
+  height: 2.2rem;
 }
 .container {
   margin: 40px 0 20px 0;
 }
 .sign {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  img {
+    width: 10rem;
+    height: 3rem;
+  }
 }
 </style>

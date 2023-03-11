@@ -13,7 +13,7 @@ import Button from '../components/Button.vue'
       </div>
 
       <div class="button-container">
-        <Button class="post-primary">YES, DELET</Button>
+        <Button class="post-primary">YES, DELETE</Button>
         <Button class="post-secondary">GO BACK</Button>
       </div>
     </div>
@@ -38,8 +38,8 @@ import Button from '../components/Button.vue'
   background: var(--element-background2-color);
   border-radius: 8px;
   margin-top: 30vh;
-  padding-top: 3vh;
-  height: 30vh;
+  padding-top: 1.5rem;
+  height: 15rem;
 }
 
 .button-container {
@@ -53,5 +53,24 @@ import Button from '../components/Button.vue'
 p {
   margin: 0%;
   text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .delete-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .confirmation-container {
+    padding: 2rem 5rem;
+    max-width: 40rem;
+    margin-top: 0;
+  }
+
+  .button-container {
+
+  width: 350px;
+
+}
 }
 </style>

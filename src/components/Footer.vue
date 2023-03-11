@@ -35,4 +35,9 @@
   width: 40px;
   height: 40px;
 }
+@media screen and (min-width: 768px) {
+  .container{
+    display: none;
+  }
+}
 </style>

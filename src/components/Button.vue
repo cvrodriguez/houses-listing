@@ -8,7 +8,7 @@
 <style  scoped>
 button {
   width: 100%;
-  height: 5vh;
+  height: 2.5rem;
   border: none;
   color: var( --element-tertiary-color);
   border-radius: 10px 10px 10px 10px;
@@ -27,5 +27,13 @@ button.post-primary {
 }
 button.post-secondary {
   background: var(--element-secundary-color);
+}
+@media screen and (min-width: 768px) {
+
+  button {
+  width: 100%;
+  border-radius: 5px 5px 5px 5px;
+  
+}
 }
 </style>

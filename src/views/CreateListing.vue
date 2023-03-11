@@ -1,9 +1,14 @@
 <script setup>
 import Button from '../components/Button.vue'
+import BackNavegation from '../components/BackNavegation.vue'
 </script>
 
 <template>
   <div class="margin-content">
+    <div class="title">
+      <BackNavegation></BackNavegation>
+      <h1>Create new listing</h1>
+    </div>
     <div class="container">
       <div class="form">
         <div class="control-field">
@@ -80,7 +85,11 @@ import Button from '../components/Button.vue'
 
 
 <style  scoped>
+.title {
+  display: none;
+}
 .container {
+  max-width: 25rem;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -88,12 +97,12 @@ import Button from '../components/Button.vue'
 
 .container::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  opacity: 0.2;
+  opacity: 0.5;
   z-index: -1;
   background-image: url('../assets/img_background@3x.png');
   background-repeat: no-repeat;
@@ -158,5 +167,12 @@ input[type='file'] {
 textarea {
   border: none;
   height: 10vh;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    display: block;
+  }
+ 
 }
 </style>

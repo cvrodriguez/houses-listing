@@ -2,48 +2,53 @@
 </script>
 
 <template>
-  <div class="house-imagen-background"></div>
-
   <div class="container">
-    
-      <h1>Stokvisstraat 132</h1>
-      <div class="field-style">
-        <img src="../assets/ic_location@3x.png" alt="" />
-        <p for="">11011 AA Amsterdam</p>
+    <div class="container-house-detail">
+      <div class="house-imagen-background"></div>
+
+      <div class="container-inf">
+        <h1>Stokvisstraat 132</h1>
+        <div class="field-style">
+          <img src="../assets/ic_location@3x.png" alt="" />
+          <p for="">11011 AA Amsterdam</p>
+        </div>
+
+        <div class="field-style">
+          <img src="../assets/ic_price@3x.png" alt="" />
+          <p for="">500.000</p>
+
+          <img src="../assets/ic_size@3x.png" alt="" />
+          <p for="">120 m2</p>
+
+          <img src="../assets/ic_construction_date@3x.png" alt="" />
+          <p for="">Built in 1990</p>
+        </div>
+        <div class="field-style">
+          <img src="../assets/ic_bed@3x.png" alt="" />
+          <p for="">1</p>
+
+          <img src="../assets/ic_bath@3x.png" alt="" />
+          <p for="">1</p>
+
+          <img src="../assets/ic_garage@3x.png" alt="" />
+          <p for="">Yes</p>
+        </div>
+        <p>
+          It has survived not only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with the release of
+          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+          software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
       </div>
-
-      <div class="field-style">
-        <img src="../assets/ic_price@3x.png" alt="" />
-        <p for="">500.000</p>
-
-        <img src="../assets/ic_size@3x.png" alt="" />
-        <p for="">120 m2</p>
-
-        <img src="../assets/ic_construction_date@3x.png" alt="" />
-        <p for="">Built in 1990</p>
-      </div>
-      <div class="field-style">
-        <img src="../assets/ic_bed@3x.png" alt="" />
-        <p for="">1</p>
-
-        <img src="../assets/ic_bath@3x.png" alt="" />
-        <p for="">1</p>
-
-        <img src="../assets/ic_garage@3x.png" alt="" />
-        <p for="">Yes</p>
-      </div>
-      <p>
-        It has survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of
-        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-        software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
     </div>
-  
+  </div>
 </template>
 
 
 <style scoped>
+.arrow-back {
+  display: none;
+}
 .house-imagen-background {
   position: relative;
   top: -10vh;
@@ -56,7 +61,7 @@
   z-index: -1;
 }
 
-.container {
+.container-inf {
   padding: 20px;
   border-radius: 20px 20px 0 0;
   background: var(--element-background2-color);
@@ -72,5 +77,30 @@
 }
 p {
   text-align: justify;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-width: 40rem;
+  }
+
+  .house-imagen-background {
+    top: 2rem;
+  }
+  .container-house-detail {
+    display: flex;
+    flex-direction: column;
+  }
+  .house-imagen-background {
+    margin-bottom: 2vh;
+    height: 55vh;
+  }
+
+  .container-inf {
+    widows: 100%;
+    border-radius: 0 0 0 0;
+    background: var(--element-background2-color);
+  }
 }
 </style>

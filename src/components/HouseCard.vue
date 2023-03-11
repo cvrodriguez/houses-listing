@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="container">
+  <div class="card">
     <router-link to="/detail-listing">
       <div class="img-container"></div>
     </router-link>
@@ -34,7 +34,7 @@
 
 
 <style scoped>
-.container {
+.card {
   display: flex;
   height: 100px;
   background-color: var(--element-background2-color);
