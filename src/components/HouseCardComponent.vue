@@ -1,32 +1,33 @@
-
 <script setup>
+defineProps(['house'])
+
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" >
     <router-link to="/detail-listing">
-      <div class="img-container"></div>
+      <div class="img-container" :style="`background-image: url(${house.image})`"></div>
     </router-link>
 
     <div class="inf-container">
       <div class="title-and-icos">
-        <h2>Stokvisstraat 132</h2>
+        <h2>{{ house.location.street }}</h2>
         <div class="icos">
           <img src="../assets/ic_edit@3x.png" alt="" />
           <img src="../assets/ic_delete@3x.png" alt="" />
         </div>
       </div>
 
-      <p class="price">$ 500.000</p>
-      <p class="address">1011AA Amsterdam</p>
+      <p class="price">€{{house.price  }}</p>
+      <p class="address">{{ house.location.zip }} {{ house.location.city }}</p>
 
       <div class="utilitis">
         <img src="../assets/ic_bed@3x.png" alt="" />
-        <span>1</span>
+        <span>{{ house.rooms.bedrooms }}</span>
         <img src="../assets/ic_bath@3x.png" alt="" />
-        <span>1</span>
+        <span>{{ house.rooms.bathrooms }}</span>
         <img src="../assets/ic_size@3x.png" alt="" />
-        <span>120 m2</span>
+        <span>{{ house.size }} m2</span>
       </div>
     </div>
   </div>
@@ -46,7 +47,7 @@
   width: 100px;
   height: 100px;
   justify-content: center;
-  background-image: url('../assets/img_placeholder_house@3x.png');
+  /* background-image: url(`${house.image}`); */
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;

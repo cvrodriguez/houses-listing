@@ -4,13 +4,19 @@ import Search from '../components/SearchComponent.vue'
 import HouseCard from '../components/HouseCardComponent.vue'
 // import EmptyList from '../components/EmptyListComponent.vue'
 
-import { onMounted } from 'vue'
+import { onMounted, onBeforeMount } from 'vue'
 import { useHeaderNavStore } from '../stores/header-nav'
+import {useHousesStore} from '../stores/listing'
 
 const headerNavStore = useHeaderNavStore()
+const housesStore = useHousesStore()
 
 onMounted(() => {
   headerNavStore.title = 'Houses'
+})
+onBeforeMount(() => {
+  
+  housesStore.fetchHouses()
 })
 </script>
 
@@ -31,7 +37,8 @@ onMounted(() => {
         </div>
       </div>
 
-      <HouseCard></HouseCard>
+      <HouseCard :key="h" v-for="h in housesStore.housesState" :house="h"></HouseCard>
+     
       <!-- <EmptyList></EmptyList> -->
     </div>
   </div>
