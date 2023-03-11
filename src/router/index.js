@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import CreateListing from '../views/CreateListing.vue'
-import Listing from '../views/Listing.vue'
-import About from '../views/About.vue'
-import DetailListing from '../views/DetailListing.vue'
+import CreateListingView from '../views/CreateListingView.vue'
+import ListingView from '../views/ListingView.vue'
+import AboutView from '../views/AboutView.vue'
+import DetailListingView from '../views/DetailListingView.vue'
 
 
 
@@ -12,22 +12,22 @@ const router = createRouter({
     {
       path: '/',
       name: 'listing',
-      component: Listing
+      component: ListingView
     },
     {
       path: '/create-new-listing',
       name: 'new-listing',
-      component: CreateListing
+      component: CreateListingView
     },
     {
       path: '/about',
       name: 'about',
-      component: About
+      component: AboutView
     },
     {
       path: '/detail-listing',
       name: 'detail-listing',
-      component: DetailListing
+      component: DetailListingView
     },
    
   ]

@@ -1,13 +1,12 @@
 <script setup>
 import { onMounted } from 'vue'
-   import {useHeaderNavStore} from '../stores/header-nav'
+import {useHeaderNavStore} from '../stores/header-nav'
 
-   const headerNavStore = useHeaderNavStore()
+const headerNavStore = useHeaderNavStore()
 
-   onMounted(() => {
-    headerNavStore.title= 'About'
+onMounted(() => {
+  headerNavStore.title= 'About'
 })
-
 </script>
 
 <template>

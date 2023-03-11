@@ -1,8 +1,8 @@
 <script setup>
-import Button from '../components/Button.vue'
-import Search from '../components/Search.vue'
-import HouseCard from '../components/HouseCard.vue'
-import EmptyList from '../components/EmptyList.vue'
+import Button from '../components/ButtonComponent.vue'
+import Search from '../components/SearchComponent.vue'
+import HouseCard from '../components/HouseCardComponent.vue'
+// import EmptyList from '../components/EmptyListComponent.vue'
 
 import { onMounted } from 'vue'
 import { useHeaderNavStore } from '../stores/header-nav'

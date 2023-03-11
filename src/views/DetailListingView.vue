@@ -1,8 +1,8 @@
 <script setup>
-import HouseDetail from '../components/HouseDetail.vue'
-import houseCard from '../components/HouseCard.vue'
-import BackNavegation from '../components/BackNavegation.vue'
-// import HouseDelete from '../components/HouseDelete.vue'
+import HouseDetail from '../components/HouseDetailComponent.vue'
+import HouseCard from '../components/HouseCardComponent.vue'
+import BackNavegation from '../components/BackNavegationComponent.vue'
+// import HouseDelete from '../components/HouseDeleteComponent.vue'
 
 import { onMounted } from 'vue'
 import {useHeaderNavStore} from '../stores/header-nav'
@@ -22,7 +22,7 @@ onMounted(() => {
 
       <div class="recommended-container">
         <h2>Recommended for you</h2>
-        <houseCard></houseCard>
+        <HouseCard></HouseCard>
       </div>
     </div>
   </div>

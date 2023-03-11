@@ -1,6 +1,6 @@
 <script setup>
-import Button from '../components/Button.vue'
-import BackNavegation from '../components/BackNavegation.vue'
+import Button from '../components/ButtonComponent.vue'
+import BackNavegation from '../components/BackNavegationComponent.vue'
 
 import { onMounted } from 'vue'
 import {useHeaderNavStore} from '../stores/header-nav'

@@ -83,7 +83,7 @@ p {
     display: flex;
     flex-direction: column;
     min-width: 40rem;
-  }
+  } 
 
   .house-imagen-background {
     top: 2rem;
