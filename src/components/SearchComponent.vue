@@ -1,11 +1,14 @@
 
 <script setup>
+import {useHousesStore} from '../stores/houses-store'
+
+const housesStore = useHousesStore()
 </script>
 
 <template>
   <div class="container">
     <span class="icon"><img src="../assets/ic_search@3x.png" alt="" /></span>
-    <input type="search" id="search" placeholder="Search for a house" />
+    <input v-model="housesStore.searchCriteria" type="search" id="search" placeholder="Search for a house" />
   </div>
 </template>
 

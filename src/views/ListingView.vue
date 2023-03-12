@@ -2,11 +2,13 @@
 import Button from '../components/ButtonComponent.vue'
 import Search from '../components/SearchComponent.vue'
 import HouseCard from '../components/HouseCardComponent.vue'
-// import EmptyList from '../components/EmptyListComponent.vue'
+import EmptyListComponent from '../components/EmptyListComponent.vue'
+
 
 import { onMounted, onBeforeMount } from 'vue'
 import { useHeaderNavStore } from '../stores/header-nav'
-import {useHousesStore} from '../stores/listing'
+import {useHousesStore} from '../stores/houses-store'
+
 
 const headerNavStore = useHeaderNavStore()
 const housesStore = useHousesStore()
@@ -35,9 +37,11 @@ onBeforeMount(() => {
           <Button class="primary button">Price</Button>
           <Button class="secondary button">Size</Button>
         </div>
+        
       </div>
-
-      <HouseCard :key="h" v-for="h in housesStore.housesState" :house="h"></HouseCard>
+      <h2 v-if="housesStore.searchCriteria !== '' && housesStore.quantityHousesFound !== 0">{{ housesStore.quantityHousesFound }} results found</h2>
+      <EmptyListComponent v-if="housesStore.quantityHousesFound === 0"></EmptyListComponent>
+      <HouseCard :key="h" v-for="h in housesStore.housesByzip" :house="h"></HouseCard>
      
       <!-- <EmptyList></EmptyList> -->
     </div>
