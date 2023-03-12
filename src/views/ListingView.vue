@@ -13,6 +13,9 @@ import {useHousesStore} from '../stores/houses-store'
 const headerNavStore = useHeaderNavStore()
 const housesStore = useHousesStore()
 
+const isPice= () => housesStore.sortBy === 'price'
+
+
 onMounted(() => {
   headerNavStore.title = 'Houses'
 })
@@ -34,14 +37,14 @@ onBeforeMount(() => {
       <div class="filter-section">
         <Search class="search-filter"></Search>
         <div class="filter-buttons">
-          <Button class="primary button">Price</Button>
-          <Button class="secondary button">Size</Button>
+          <Button :class="`primary button ${isPice() ?'' :'inactive'}`" @click="housesStore.sortBy = 'price'" >Price</Button>
+          <Button :class="`secondary button ${isPice() ?'' :'active'}`" @click="housesStore.sortBy = 'size'">Size</Button>
         </div>
         
       </div>
       <h2 v-if="housesStore.searchCriteria !== '' && housesStore.quantityHousesFound !== 0">{{ housesStore.quantityHousesFound }} results found</h2>
       <EmptyListComponent v-if="housesStore.quantityHousesFound === 0"></EmptyListComponent>
-      <HouseCard :key="h" v-for="h in housesStore.housesByzip" :house="h"></HouseCard>
+      <HouseCard :key="h" v-for="h in housesStore.sortedHouses" :house="h"></HouseCard>
      
       <!-- <EmptyList></EmptyList> -->
     </div>
