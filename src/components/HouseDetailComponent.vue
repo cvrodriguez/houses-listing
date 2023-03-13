@@ -1,44 +1,64 @@
 <script setup>
+import { useHousesStore } from '../stores/houses-store'
+
+const housesStore = useHousesStore()
+
+housesStore.houseIdState
+const props = defineProps(['house-id'])
+console.log(props.houseId)
+
+housesStore.houseIdState = parseInt(props.houseId)
 </script>
 
 <template>
   <div class="container">
     <div class="container-house-detail">
-      <div class="house-imagen-background"></div>
+      <div
+        class="house-imagen-background"
+        :style="`background-image: url(${housesStore.house.image})`"
+      ></div>
 
       <div class="container-inf">
-        <h1>Stokvisstraat 132</h1>
+        <div class="modification-section">
+          <h1>{{ housesStore.house.location.street }}</h1>
+
+          <div class="icons-container" v-if="housesStore.house.madeByMe">
+            <router-link to="">
+              <img src="../assets/ic_edit@3x.png" alt="" />
+            </router-link>
+            <router-link to="">
+              <img src="../assets/ic_delete@3x.png" alt="" />
+            </router-link>
+          </div>
+        </div>
+
         <div class="field-style">
           <img src="../assets/ic_location@3x.png" alt="" />
-          <p for="">11011 AA Amsterdam</p>
+          <p for="">{{ housesStore.house.location.zip }}{{ housesStore.house.location.city }}</p>
         </div>
 
         <div class="field-style">
           <img src="../assets/ic_price@3x.png" alt="" />
-          <p for="">500.000</p>
+          <p for="">{{ housesStore.house.price }}</p>
 
           <img src="../assets/ic_size@3x.png" alt="" />
-          <p for="">120 m2</p>
+          <p for="">{{ housesStore.house.size }} m2</p>
 
           <img src="../assets/ic_construction_date@3x.png" alt="" />
-          <p for="">Built in 1990</p>
+          <p for="">Built in{{ housesStore.house.constructionYear }}</p>
         </div>
         <div class="field-style">
           <img src="../assets/ic_bed@3x.png" alt="" />
-          <p for="">1</p>
+          <p for="">{{ housesStore.house.rooms.bedrooms }}</p>
 
           <img src="../assets/ic_bath@3x.png" alt="" />
-          <p for="">1</p>
+          <p for="">{{ housesStore.house.rooms.bathrooms }}</p>
 
           <img src="../assets/ic_garage@3x.png" alt="" />
-          <p for="">Yes</p>
+          <p for="" v-if="housesStore.house.hasGarage">Yes</p>
+          <p for="" v-else>No</p>
         </div>
-        <p>
-          It has survived not only five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with the release of
-          Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-          software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
+        <p>{{ housesStore.house.description }}</p>
       </div>
     </div>
   </div>
@@ -54,7 +74,6 @@
   top: -10vh;
   width: 100%;
   height: 30vh;
-  background-image: url('../assets/img_placeholder_house@3x.png');
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: -14vh;
@@ -65,6 +84,20 @@
   padding: 20px;
   border-radius: 20px 20px 0 0;
   background: var(--element-background2-color);
+}
+.modification-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icons-container{
+  display: flex;
+  gap: 3rem;
+}
+
+.modification-section img {
+  width: 16px;
+  height: 18px;
 }
 .field-style {
   display: flex;
@@ -83,7 +116,7 @@ p {
     display: flex;
     flex-direction: column;
     min-width: 40rem;
-  } 
+  }
 
   .house-imagen-background {
     top: 2rem;
@@ -102,5 +135,10 @@ p {
     border-radius: 0 0 0 0;
     background: var(--element-background2-color);
   }
+
+  .modification-section img {
+  width: 23px;
+  height: 25px;
+}
 }
 </style>

@@ -9,10 +9,12 @@ export const useHousesStore = defineStore('houses-store', () => {
     const housesState = ref([])
     const searchCriteria = ref('')
     const sortBy = ref('price')
+    const houseIdState = ref(-1)
 
 
     // Getters
     const housesByzip = computed(() => housesState.value.filter((h) => h.location.zip.includes(searchCriteria.value)))
+    const house = computed(() => housesState.value.find((h) => h.id === houseIdState.value))
     const quantityHousesFound = computed(() => housesByzip.value.length)
     const sortedHouses = computed(() => {
        
@@ -30,5 +32,5 @@ export const useHousesStore = defineStore('houses-store', () => {
         housesState.value = await api.getListing()
     }
 
-    return { housesState, fetchHouses, housesByzip, searchCriteria, quantityHousesFound, sortedHouses, sortBy }
+    return { housesState, fetchHouses, housesByzip, searchCriteria, quantityHousesFound, sortedHouses, sortBy, house, houseIdState }
 })

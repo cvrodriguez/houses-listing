@@ -6,8 +6,13 @@ import BackNavegation from '../components/BackNavegationComponent.vue'
 
 import { onMounted } from 'vue'
 import {useHeaderNavStore} from '../stores/header-nav'
+import {  useRoute } from 'vue-router'
+
 
 const headerNavStore = useHeaderNavStore()
+const route = useRoute()
+const id = route.params.id
+console.log(id)
 
 onMounted(() => {
  headerNavStore.title= ''
@@ -18,11 +23,11 @@ onMounted(() => {
   <div class="listing-container">
     <BackNavegation class="arrow-back"></BackNavegation>
     <div class="detail-and-recommended">
-      <HouseDetail></HouseDetail>
+      <HouseDetail :house-id="id"></HouseDetail>
 
       <div class="recommended-container">
         <h2>Recommended for you</h2>
-        <HouseCard></HouseCard>
+        <!-- <HouseCard></HouseCard> -->
       </div>
     </div>
   </div>

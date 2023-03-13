@@ -5,7 +5,7 @@ defineProps(['house'])
 
 <template>
   <div class="card" >
-    <router-link to="/detail-listing">
+    <router-link :to="`/detail-listing/${house.id}`">
       <div class="img-container" :style="`background-image: url(${house.image})`"></div>
     </router-link>
 
