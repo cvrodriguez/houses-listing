@@ -1,46 +1,62 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import Button from '../components/ButtonComponent.vue'
 import BackNavegation from '../components/BackNavegationComponent.vue'
 
-import { onMounted } from 'vue'
-import {useHeaderNavStore} from '../stores/header-nav'
+import { onMounted, reactive } from 'vue'
+import { useHeaderNavStore } from '../stores/header-nav'
+import { useHousesStore } from '../stores/houses-store'
 
-   const headerNavStore = useHeaderNavStore()
 
-   onMounted(() => {
-    headerNavStore.title= 'Create new listing'
-   })
+const headerNavStore = useHeaderNavStore()
+const housesStore = useHousesStore()
+const router = useRouter()
+const dataform = reactive({})
+
+
+
+onMounted(() => {
+  headerNavStore.title = 'Create new listing'
+})
+
+const addListing = async ()  => {
+
+ await housesStore.addNewListing(dataform)
+ const houseIdToGo = housesStore.newHouseState.id
+ router.push({ path: `/detail-listing/${houseIdToGo}`, replace: true })
+}
+
 </script>
 
 <template>
   <div class="margin-content">
     <div class="title">
       <BackNavegation></BackNavegation>
-      <h1>{{headerNavStore.title }}</h1>
+      <h1>{{ headerNavStore.title }}</h1>
     </div>
     <div class="container">
-      <div class="form">
+      <form @submit.prevent="addListing()" class="form">
         <div class="control-field">
           <label for="">Street name*</label>
-          <input type="text" placeholder="Enter the street name" />
+          <input v-model=" dataform.streetName" required type="text" placeholder="Enter the street name" />
         </div>
         <div class="horizontal-group-control-field">
           <div class="control-field">
             <label for="">House number*</label>
-            <input type="text" placeholder="Enter house number" />
+            <input  v-model="dataform.houseNumber" type="text" placeholder="Enter house number" />
           </div>
           <div class="control-field">
             <label for="">Addition (optional)</label>
-            <input type="text" placeholder="e.g.A" />
+            <input v-model="dataform.numberAddition" type="text" placeholder="e.g.A" />
           </div>
         </div>
         <div class="control-field">
           <label for="">Post code*</label>
-          <input type="text" placeholder="e.g. 1000A" />
+          <input  v-model="dataform.zip" required type="text" placeholder="e.g. 1000A" />
         </div>
         <div class="control-field">
           <label for="">City*</label>
-          <input type="text" placeholder="e.g. Utrecht" />
+          <input  v-model="dataform.city" required type="text" placeholder="e.g. Utrecht" />
         </div>
         <div class="control-field">
           <label>Upload picture (PNG or JPG)*</label>
@@ -51,42 +67,43 @@ import {useHeaderNavStore} from '../stores/header-nav'
         </div>
         <div class="control-field">
           <label for="">Price*</label>
-          <input type="text" placeholder="e.g. $150.000" />
+          <input v-model="dataform.price" required type="text" placeholder="e.g. $150.000" />
         </div>
         <div class="horizontal-group-control-field">
           <div class="control-field">
             <label for="">Size*</label>
-            <input type="text" placeholder="e.g. 60m2" />
+            <input v-model="dataform.size" required type="text" placeholder="e.g. 60m2" />
           </div>
           <div class="control-field">
             <label for="">Garage*</label>
-            <select name="" id="">
+            <select name="" id="" v-model="dataform.hasGarage">
+              <option disabled value="">Please select one</option>
               <option value="">Select</option>
-              <option value="">Yes</option>
-              <option value="">No</option>
+              <option :value="true">Yes</option>
+              <option :value="false">No</option>
             </select>
           </div>
         </div>
         <div class="horizontal-group-control-field">
           <div class="control-field">
             <label for="">Bedrooms*</label>
-            <input type="text" placeholder="Enter amount" />
+            <input v-model="dataform.bedrooms" required type="text" placeholder="Enter amount" />
           </div>
           <div class="control-field">
             <label for="">Bathrooms*</label>
-            <input type="text" placeholder="Enter amount" />
+            <input v-model="dataform.bathrooms" required type="text" placeholder="Enter amount" />
           </div>
         </div>
         <div class="control-field">
           <label for="">Construction date*</label>
-          <input type="text" placeholder="e.g. 1900" />
+          <input v-model="dataform.constructionYear" required type="text" placeholder="e.g. 1900" />
         </div>
         <div class="control-field">
           <label for="">Description*</label>
-          <textarea placeholder="Enter description" rows="10px" />
+          <textarea  v-model="dataform.description" required placeholder="Enter description" rows="10px" />
         </div>
         <Button class="post-primary">Post</Button>
-      </div>
+      </form>
     </div>
   </div>
 </template>
