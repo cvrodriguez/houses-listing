@@ -3,29 +3,68 @@ import { useRouter } from 'vue-router'
 import Button from '../components/ButtonComponent.vue'
 import BackNavegation from '../components/BackNavegationComponent.vue'
 
-import { onMounted, reactive } from 'vue'
+import { onMounted} from 'vue'
 import { useHeaderNavStore } from '../stores/header-nav'
 import { useHousesStore } from '../stores/houses-store'
 
+import { useField, useForm } from 'vee-validate'
+import { toFormValidator } from '@vee-validate/zod'
+import * as zod from 'zod'
 
 const headerNavStore = useHeaderNavStore()
 const housesStore = useHousesStore()
 const router = useRouter()
-const dataform = reactive({})
 
 
+const requiredMessage = 'Required field missing.'
+const defaultRequiredMessage = { required_error: requiredMessage }
+
+const validationSchema = toFormValidator(
+  zod.object({
+    streetName: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
+    houseNumber: zod.number(defaultRequiredMessage).positive().int(),
+    numberAddition: zod.string().optional(),
+    zip: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
+    city: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
+    price: zod.number(defaultRequiredMessage).positive().int(),
+    size: zod.number(defaultRequiredMessage).positive().int(),
+    hasGarage: zod.boolean(defaultRequiredMessage),
+    bedrooms: zod.number(defaultRequiredMessage).positive().int(),
+    bathrooms: zod.number(defaultRequiredMessage).positive().int(),
+    constructionYear: zod.number(defaultRequiredMessage).positive().int().gt(1900),
+    description: zod.string(defaultRequiredMessage).nonempty(requiredMessage)
+  })
+)
+
+const { handleSubmit, errors } = useForm({ validationSchema })
+
+const { value: streetName } = useField('streetName')
+const { value: houseNumber } = useField('houseNumber')
+const { value: numberAddition } = useField('numberAddition')
+const { value: zip } = useField('zip')
+const { value: city } = useField('city')
+const { value: price } = useField('price')
+const { value: size } = useField('size')
+const { value: hasGarage } = useField('hasGarage')
+const { value: bedrooms } = useField('bedrooms')
+const { value: bathrooms } = useField('bathrooms')
+const { value: constructionYear } = useField('constructionYear')
+const { value: description } = useField('description')
+
+const onSubmit = handleSubmit((values) => {
+  console.log(values)
+  addListing(values)
+})
 
 onMounted(() => {
   headerNavStore.title = 'Create new listing'
 })
 
-const addListing = async ()  => {
-
- await housesStore.addNewListing(dataform)
- const houseIdToGo = housesStore.newHouseState.id
- router.push({ path: `/detail-listing/${houseIdToGo}`, replace: true })
+const addListing = async (dataform) => {
+  await housesStore.addNewListing(dataform)
+  const houseIdToGo = housesStore.newHouseState.id
+  router.push({ path: `/detail-listing/${houseIdToGo}`, replace: true })
 }
-
 </script>
 
 <template>
@@ -35,28 +74,57 @@ const addListing = async ()  => {
       <h1>{{ headerNavStore.title }}</h1>
     </div>
     <div class="container">
-      <form @submit.prevent="addListing()" class="form">
+      <form @submit="onSubmit" class="form">
         <div class="control-field">
           <label for="">Street name*</label>
-          <input v-model=" dataform.streetName" required type="text" placeholder="Enter the street name" />
+          <input
+            name="streetName"
+            v-model="streetName"
+            :class="{ errorField: errors.streetName }"
+            type="text"
+            placeholder="Enter the street name"
+          />
+          <span class="errorMessage">{{ errors.streetName }}</span>
         </div>
         <div class="horizontal-group-control-field">
           <div class="control-field">
             <label for="">House number*</label>
-            <input  v-model="dataform.houseNumber" type="text" placeholder="Enter house number" />
+            <input
+              name="houseNumber"
+              v-model="houseNumber"
+              :class="{ errorField: errors.houseNumber }"
+              type="number"
+              placeholder="Enter house number"
+            />
+            <span class="errorMessage">{{ errors.houseNumber }}</span>
           </div>
           <div class="control-field">
             <label for="">Addition (optional)</label>
-            <input v-model="dataform.numberAddition" type="text" placeholder="e.g.A" />
+            <input name="numberAddition" v-model="numberAddition" type="text" placeholder="e.g.A" />
+            <span class="errorMessage">{{ errors.numberAddition }}</span>
           </div>
         </div>
         <div class="control-field">
           <label for="">Post code*</label>
-          <input  v-model="dataform.zip" required type="text" placeholder="e.g. 1000A" />
+          <input
+            name="zip"
+            v-model="zip"
+            :class="{ errorField: errors.zip }"
+            type="text"
+            placeholder="e.g. 1000A"
+          />
+          <span class="errorMessage">{{ errors.zip }}</span>
         </div>
         <div class="control-field">
           <label for="">City*</label>
-          <input  v-model="dataform.city" required type="text" placeholder="e.g. Utrecht" />
+          <input
+            name="city"
+            v-model="city"
+            :class="{ errorField: errors.city }"
+            type="text"
+            placeholder="e.g. Utrecht"
+          />
+          <span class="errorMessage">{{ errors.city }}</span>
         </div>
         <div class="control-field">
           <label>Upload picture (PNG or JPG)*</label>
@@ -67,40 +135,89 @@ const addListing = async ()  => {
         </div>
         <div class="control-field">
           <label for="">Price*</label>
-          <input v-model="dataform.price" required type="text" placeholder="e.g. $150.000" />
+          <input
+            name="price"
+            v-model="price"
+            :class="{ errorField: errors.price }"
+            type="number"
+            placeholder="e.g. $150.000"
+          />
+          <span class="errorMessage">{{ errors.price }}</span>
         </div>
         <div class="horizontal-group-control-field">
           <div class="control-field">
             <label for="">Size*</label>
-            <input v-model="dataform.size" required type="text" placeholder="e.g. 60m2" />
+            <input
+              name="size"
+              v-model="size"
+              :class="{ errorField: errors.size }"
+              type="number"
+              placeholder="e.g. 60m2"
+            />
+            <span class="errorMessage">{{ errors.price }}</span>
           </div>
           <div class="control-field">
             <label for="">Garage*</label>
-            <select name="" id="" v-model="dataform.hasGarage">
+            <select
+              name="hasGarage"
+              v-model="hasGarage"
+              :class="{ errorField: errors.hasGarage }"
+              type="boolean"
+            >
               <option disabled value="">Please select one</option>
               <option value="">Select</option>
               <option :value="true">Yes</option>
               <option :value="false">No</option>
             </select>
+            <span class="errorMessage">{{ errors.hasGarage }}</span>
           </div>
         </div>
         <div class="horizontal-group-control-field">
           <div class="control-field">
             <label for="">Bedrooms*</label>
-            <input v-model="dataform.bedrooms" required type="text" placeholder="Enter amount" />
+            <input
+              name="bedrooms"
+              v-model="bedrooms"
+              :class="{ errorField: errors.bedrooms }"
+              type="number"
+              placeholder="Enter amount"
+            />
+            <span class="errorMessage">{{ errors.bedrooms }}</span>
           </div>
           <div class="control-field">
             <label for="">Bathrooms*</label>
-            <input v-model="dataform.bathrooms" required type="text" placeholder="Enter amount" />
+            <input
+              name="bathrooms"
+              v-model="bathrooms"
+              :class="{ errorField: errors.bathrooms }"
+              type="number"
+              placeholder="Enter amount"
+            />
+            <span class="errorMessage">{{ errors.bathrooms }}</span>
           </div>
         </div>
         <div class="control-field">
           <label for="">Construction date*</label>
-          <input v-model="dataform.constructionYear" required type="text" placeholder="e.g. 1900" />
+          <input
+            name="constructionYear"
+            v-model="constructionYear"
+            :class="{ errorField: errors.constructionYear }"
+            type="number"
+            placeholder="e.g. 1900"
+          />
+          <span class="errorMessage">{{ errors.constructionYear }}</span>
+
         </div>
         <div class="control-field">
           <label for="">Description*</label>
-          <textarea  v-model="dataform.description" required placeholder="Enter description" rows="10px" />
+          <textarea
+            name="description"
+            v-model="description"
+            :class="{ errorField: errors.description }"
+            placeholder="Enter description"
+            rows="10px"
+          />
+          <span class="errorMessage">{{ errors.description }}</span>
         </div>
         <Button class="post-primary">Post</Button>
       </form>
