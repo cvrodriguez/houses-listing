@@ -1,10 +1,11 @@
-import { ref, computed, reactive } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 
 import * as api from '../api'
 
 export const useHousesStore = defineStore('houses-store', () => {
+
     // States
     const housesState = ref([])
     const searchCriteria = ref('')
@@ -36,9 +37,12 @@ export const useHousesStore = defineStore('houses-store', () => {
     async function addNewListing(dataHouseForm) {
         const housewithId = await api.createListing(dataHouseForm)
         newHouseState.value = housewithId
-        await fetchHouses()
-        
     }
 
-    return { housesState, fetchHouses, housesByzip, searchCriteria, quantityHousesFound, sortedHouses, sortBy, house, houseIdState, newHouseState, addNewListing }
+    async function uploadImage(id,image){
+        await api.uploadImage(id, image)
+        await fetchHouses()
+    }
+
+    return { housesState, fetchHouses, housesByzip, searchCriteria, quantityHousesFound, sortedHouses, sortBy, house, houseIdState, newHouseState, addNewListing, uploadImage }
 })

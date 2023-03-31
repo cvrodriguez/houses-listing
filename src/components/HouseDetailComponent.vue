@@ -5,7 +5,6 @@ const housesStore = useHousesStore()
 
 housesStore.houseIdState
 const props = defineProps(['house-id'])
-console.log(props.houseId)
 
 housesStore.houseIdState = parseInt(props.houseId)
 </script>

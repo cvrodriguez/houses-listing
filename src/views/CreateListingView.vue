@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import Button from '../components/ButtonComponent.vue'
 import BackNavegation from '../components/BackNavegationComponent.vue'
 
-import { onMounted} from 'vue'
+import { onMounted, ref } from 'vue'
 import { useHeaderNavStore } from '../stores/header-nav'
 import { useHousesStore } from '../stores/houses-store'
 
@@ -15,7 +15,6 @@ const headerNavStore = useHeaderNavStore()
 const housesStore = useHousesStore()
 const router = useRouter()
 
-
 const requiredMessage = 'Required field missing.'
 const defaultRequiredMessage = { required_error: requiredMessage }
 
@@ -23,9 +22,10 @@ const validationSchema = toFormValidator(
   zod.object({
     streetName: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
     houseNumber: zod.number(defaultRequiredMessage).positive().int(),
-    numberAddition: zod.string().optional(),
+    numberAddition: zod.string().optional().default(''),
     zip: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
     city: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
+   
     price: zod.number(defaultRequiredMessage).positive().int(),
     size: zod.number(defaultRequiredMessage).positive().int(),
     hasGarage: zod.boolean(defaultRequiredMessage),
@@ -43,6 +43,7 @@ const { value: houseNumber } = useField('houseNumber')
 const { value: numberAddition } = useField('numberAddition')
 const { value: zip } = useField('zip')
 const { value: city } = useField('city')
+
 const { value: price } = useField('price')
 const { value: size } = useField('size')
 const { value: hasGarage } = useField('hasGarage')
@@ -51,10 +52,22 @@ const { value: bathrooms } = useField('bathrooms')
 const { value: constructionYear } = useField('constructionYear')
 const { value: description } = useField('description')
 
+const image = ref()
+const imagePreview = ref()
+
 const onSubmit = handleSubmit((values) => {
-  console.log(values)
   addListing(values)
 })
+
+function uploadImageInput(event) {
+  image.value = event.target.files[0]
+
+  const reader = new FileReader()
+  reader.addEventListener('load', (e) => {
+    imagePreview.value = e.target.result
+  })
+  reader.readAsDataURL(image.value)
+}
 
 onMounted(() => {
   headerNavStore.title = 'Create new listing'
@@ -63,6 +76,8 @@ onMounted(() => {
 const addListing = async (dataform) => {
   await housesStore.addNewListing(dataform)
   const houseIdToGo = housesStore.newHouseState.id
+  await housesStore.uploadImage(houseIdToGo, image.value)
+
   router.push({ path: `/detail-listing/${houseIdToGo}`, replace: true })
 }
 </script>
@@ -86,6 +101,7 @@ const addListing = async (dataform) => {
           />
           <span class="errorMessage">{{ errors.streetName }}</span>
         </div>
+
         <div class="horizontal-group-control-field">
           <div class="control-field">
             <label for="">House number*</label>
@@ -98,12 +114,14 @@ const addListing = async (dataform) => {
             />
             <span class="errorMessage">{{ errors.houseNumber }}</span>
           </div>
+
           <div class="control-field">
             <label for="">Addition (optional)</label>
             <input name="numberAddition" v-model="numberAddition" type="text" placeholder="e.g.A" />
             <span class="errorMessage">{{ errors.numberAddition }}</span>
           </div>
         </div>
+
         <div class="control-field">
           <label for="">Post code*</label>
           <input
@@ -115,6 +133,7 @@ const addListing = async (dataform) => {
           />
           <span class="errorMessage">{{ errors.zip }}</span>
         </div>
+
         <div class="control-field">
           <label for="">City*</label>
           <input
@@ -126,13 +145,24 @@ const addListing = async (dataform) => {
           />
           <span class="errorMessage">{{ errors.city }}</span>
         </div>
+
         <div class="control-field">
           <label>Upload picture (PNG or JPG)*</label>
           <label for="file-upload" class="custom-file-upload">
-            <img src="../assets/ic_plus_grey@3x.png" alt="" />
+            <img v-if="image" :src="imagePreview" alt="" />
+            <img v-else src="../assets/ic_plus_grey@3x.png" alt="" />
           </label>
-          <input id="file-upload" type="file" />
+          <input
+            name="image"
+            @change="uploadImageInput"
+            :class="{ errorField: errors.image }"
+            type="file"
+            id="file-upload"
+
+          />
+          <span class="errorMessage">{{ errors.image }}</span>
         </div>
+
         <div class="control-field">
           <label for="">Price*</label>
           <input
@@ -206,7 +236,6 @@ const addListing = async (dataform) => {
             placeholder="e.g. 1900"
           />
           <span class="errorMessage">{{ errors.constructionYear }}</span>
-
         </div>
         <div class="control-field">
           <label for="">Description*</label>
