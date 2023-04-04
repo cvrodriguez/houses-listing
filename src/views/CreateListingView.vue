@@ -25,7 +25,7 @@ const validationSchema = toFormValidator(
     numberAddition: zod.string().optional().default(''),
     zip: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
     city: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
-   
+    imagenValidation: zod.string(defaultRequiredMessage).nonempty(requiredMessage),
     price: zod.number(defaultRequiredMessage).positive().int(),
     size: zod.number(defaultRequiredMessage).positive().int(),
     hasGarage: zod.boolean(defaultRequiredMessage),
@@ -43,7 +43,7 @@ const { value: houseNumber } = useField('houseNumber')
 const { value: numberAddition } = useField('numberAddition')
 const { value: zip } = useField('zip')
 const { value: city } = useField('city')
-
+const { value: imagenValidation } = useField('imagenValidation')
 const { value: price } = useField('price')
 const { value: size } = useField('size')
 const { value: hasGarage } = useField('hasGarage')
@@ -60,13 +60,22 @@ const onSubmit = handleSubmit((values) => {
 })
 
 function uploadImageInput(event) {
-  image.value = event.target.files[0]
+  if (event.target.files[0]) {
+    imagenValidation.value = event.target.files[0].name
 
-  const reader = new FileReader()
-  reader.addEventListener('load', (e) => {
-    imagePreview.value = e.target.result
-  })
-  reader.readAsDataURL(image.value)
+    image.value = event.target.files[0]
+
+    const reader = new FileReader()
+    reader.addEventListener('load', (e) => {
+      imagePreview.value = e.target.result
+    })
+    reader.readAsDataURL(image.value)
+  } else {
+    imagenValidation.value = ''
+    imagePreview.value = undefined
+    image.value = undefined
+    return
+  }
 }
 
 onMounted(() => {
@@ -155,12 +164,11 @@ const addListing = async (dataform) => {
           <input
             name="image"
             @change="uploadImageInput"
-            :class="{ errorField: errors.image }"
+            :class="{ errorField: errors.imagenValidation }"
             type="file"
             id="file-upload"
-
           />
-          <span class="errorMessage">{{ errors.image }}</span>
+          <span class="errorMessage">{{ errors.imagenValidation }}</span>
         </div>
 
         <div class="control-field">
