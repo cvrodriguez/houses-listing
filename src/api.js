@@ -51,5 +51,8 @@ const uploadImage = async (id, image) => {
     return response.data
 }
 
+ const deleteListing = async (id)=>{
+    await axios.delete(`${url_api}/houses/${id}`, config)
+ }
 
-export { getListing, createListing, uploadImage }
+export { getListing, createListing, uploadImage, deleteListing }

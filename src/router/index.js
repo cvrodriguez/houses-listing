@@ -3,6 +3,7 @@ import CreateListingView from '../views/CreateListingView.vue'
 import ListingView from '../views/ListingView.vue'
 import AboutView from '../views/AboutView.vue'
 import DetailListingView from '../views/DetailListingView.vue'
+import EditListingView from '../views/EditListingView.vue'
 
 
 
@@ -29,6 +30,12 @@ const router = createRouter({
       name: 'detail-listing',
       component: DetailListingView
     },
+    {
+      path: '/edit-listing/:id',
+      name: 'edit-listing',
+      component: EditListingView
+    },
+   
    
   ]
 })

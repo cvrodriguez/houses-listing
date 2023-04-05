@@ -1,5 +1,22 @@
 <script setup>
 import Button from './ButtonComponent.vue'
+import { useRouter } from 'vue-router'
+import { useHousesStore } from '../stores/houses-store'
+
+const router = useRouter()
+const props = defineProps(['houseId','toggleGoBack'])
+const housesStore = useHousesStore()
+
+
+const goBack = () => {
+  router.push({path: `/detail-listing/${props.houseId}`})
+  props.toggleGoBack()
+}
+
+const deleteHouseConfirmation = async () =>   {
+  await housesStore.deleteHouse(props.houseId)
+  router.push({ path: '/' })
+}
 </script>
 
 <template>
@@ -13,8 +30,8 @@ import Button from './ButtonComponent.vue'
       </div>
 
       <div class="button-container">
-        <Button class="post-primary">YES, DELETE</Button>
-        <Button class="post-secondary">GO BACK</Button>
+        <Button @click="deleteHouseConfirmation" class="post-primary">YES, DELETE</Button>
+        <Button @click="goBack" class="post-secondary">GO BACK</Button>
       </div>
     </div>
   </div>
@@ -64,7 +81,7 @@ p {
   .confirmation-container {
     padding: 2rem 5rem;
     max-width: 40rem;
-    margin-top: 0;
+    margin-top: 12rem;
   }
 
   .button-container {

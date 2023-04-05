@@ -1,12 +1,23 @@
 <script setup>
+import { ref} from 'vue'
+import { useRouter } from 'vue-router'
 import { useHousesStore } from '../stores/houses-store'
+import HouseDelete from '../components/HouseDeleteComponent.vue'
 
+const router = useRouter()
 const housesStore = useHousesStore()
-
-housesStore.houseIdState
+const deleteTrue = ref(false)
 const props = defineProps(['house-id'])
 
 housesStore.houseIdState = parseInt(props.houseId)
+
+const deleteHouse = () =>{
+  deleteTrue.value = !deleteTrue.value 
+}
+
+const editHouseButton = () =>{
+  router.push({path:`/edit-listing/${props.houseId}`})
+}
 </script>
 
 <template>
@@ -22,12 +33,13 @@ housesStore.houseIdState = parseInt(props.houseId)
           <h1>{{ housesStore.house.location.street }}</h1>
 
           <div class="icons-container" v-if="housesStore.house.madeByMe">
-            <router-link to="">
-              <img src="../assets/ic_edit@3x.png" alt="" />
-            </router-link>
-            <router-link to="">
-              <img src="../assets/ic_delete@3x.png" alt="" />
-            </router-link>
+           
+              <img @click="editHouseButton" src="../assets/ic_edit@3x.png" alt="" />
+            
+            <!-- <router-link @click="deleteHouse" to="/delete-listing"> -->
+              <img src="../assets/ic_delete@3x.png" alt="" @click="deleteHouse" />
+              <HouseDelete :toggleGoBack="deleteHouse" :houseId="housesStore.house.id" v-show="deleteTrue"></HouseDelete>
+            <!-- </router-link> -->
           </div>
         </div>
 

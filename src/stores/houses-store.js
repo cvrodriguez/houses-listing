@@ -44,5 +44,10 @@ export const useHousesStore = defineStore('houses-store', () => {
         await fetchHouses()
     }
 
-    return { housesState, fetchHouses, housesByzip, searchCriteria, quantityHousesFound, sortedHouses, sortBy, house, houseIdState, newHouseState, addNewListing, uploadImage }
+    async function deleteHouse(id){
+        await api.deleteListing(id)
+        await fetchHouses()
+    }
+
+    return { housesState, fetchHouses, housesByzip, searchCriteria, quantityHousesFound, sortedHouses, sortBy, house, houseIdState, newHouseState, addNewListing, uploadImage,deleteHouse }
 })

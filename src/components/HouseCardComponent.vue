@@ -13,9 +13,9 @@ defineProps(['house'])
       <div class="title-and-icos">
         <h2>{{ house.location.street }}</h2>
         <div class="icos">
-          <img src="../assets/ic_edit@3x.png" alt="" />
-          <img src="../assets/ic_delete@3x.png" alt="" />
-        </div>
+          <img v-if="house.madeByMe" src="../assets/ic_edit@3x.png" alt="" />
+          <img v-if="house.madeByMe" src="../assets/ic_delete@3x.png" alt="" />
+        </div>  
       </div>
 
       <p class="price">€{{house.price  }}</p>
