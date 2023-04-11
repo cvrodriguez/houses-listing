@@ -35,11 +35,11 @@ const editHouseButton = () =>{
           <div class="icons-container" v-if="housesStore.house.madeByMe">
            
               <img @click="editHouseButton" src="../assets/ic_edit@3x.png" alt="" />
-            
-            <!-- <router-link @click="deleteHouse" to="/delete-listing"> -->
+
+           
               <img src="../assets/ic_delete@3x.png" alt="" @click="deleteHouse" />
               <HouseDelete :toggleGoBack="deleteHouse" :houseId="housesStore.house.id" v-show="deleteTrue"></HouseDelete>
-            <!-- </router-link> -->
+          
           </div>
         </div>
 

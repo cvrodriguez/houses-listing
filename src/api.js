@@ -42,6 +42,30 @@ const createListing = async (houseData) => {
     return response.data
 }
 
+const editListing = async (houseData, id) => {
+
+    var data = new FormData();
+    data.append('price', houseData.price);
+    data.append('bedrooms', houseData.bedrooms);
+    data.append('bathrooms', houseData.bathrooms);
+    data.append('size', houseData.size);
+    data.append('streetName', houseData.streetName);
+    data.append('houseNumber', houseData.houseNumber);
+    data.append('numberAddition', houseData.numberAddition);
+    data.append('zip', houseData.zip);
+    data.append('city', houseData.city);
+    data.append('constructionYear', houseData.constructionYear);
+    data.append('hasGarage', houseData.hasGarage);
+    data.append('description', houseData.description);
+    
+    console.log(houseData, houseData.id, "soy id")
+
+    const response = await axios.post(`${url_api}/houses/${id}`, data, configPost)
+    return response.data
+}
+
+
+
 const uploadImage = async (id, image) => {
 
     var data = new FormData();
@@ -55,4 +79,4 @@ const uploadImage = async (id, image) => {
     await axios.delete(`${url_api}/houses/${id}`, config)
  }
 
-export { getListing, createListing, uploadImage, deleteListing }
+export { getListing, createListing, uploadImage, deleteListing, editListing }

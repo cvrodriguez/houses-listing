@@ -39,6 +39,10 @@ export const useHousesStore = defineStore('houses-store', () => {
         newHouseState.value = housewithId
     }
 
+    async function editListing(dataHouseForm) {
+       await api.editListing(dataHouseForm, house.value.id)
+    }
+
     async function uploadImage(id,image){
         await api.uploadImage(id, image)
         await fetchHouses()
@@ -49,5 +53,5 @@ export const useHousesStore = defineStore('houses-store', () => {
         await fetchHouses()
     }
 
-    return { housesState, fetchHouses, housesByzip, searchCriteria, quantityHousesFound, sortedHouses, sortBy, house, houseIdState, newHouseState, addNewListing, uploadImage,deleteHouse }
+    return { housesState, fetchHouses, housesByzip, searchCriteria, quantityHousesFound, sortedHouses, sortBy, house, houseIdState, newHouseState, addNewListing, uploadImage,deleteHouse,editListing }
 })
