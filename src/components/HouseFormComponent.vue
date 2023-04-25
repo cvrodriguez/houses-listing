@@ -18,7 +18,7 @@ const defaultHouseStreetName = ref()
 const image = ref()
 const imagePreview = ref()
 
-if(props.house){
+if (props.house) {
   const locationSplit = props.house.location.street.split(' ')
   defaultHouseNumber.value = parseInt(locationSplit.pop())
   defaultHouseStreetName.value = locationSplit.join(' ')
@@ -27,19 +27,61 @@ if(props.house){
 
 const validationSchema = toFormValidator(
   zod.object({
-    streetName: zod.string(defaultRequiredMessage).nonempty(requiredMessage).default(defaultHouseStreetName.value),
-    houseNumber: zod.number(defaultRequiredMessage).positive().int().default(defaultHouseNumber.value),
+    streetName: zod
+      .string(defaultRequiredMessage)
+      .nonempty(requiredMessage)
+      .default(defaultHouseStreetName.value),
+    houseNumber: zod
+      .number(defaultRequiredMessage)
+      .positive()
+      .int()
+      .default(defaultHouseNumber.value),
     numberAddition: zod.string().optional().default(''),
-    zip: zod.string(defaultRequiredMessage).nonempty(requiredMessage).default(props.house?props.house.location.zip:''),
-    city: zod.string(defaultRequiredMessage).nonempty(requiredMessage).default(props.house?props.house.location.city:''),
-    imagenValidation: zod.string(defaultRequiredMessage).nonempty(requiredMessage).default(props.house?props.house.image:''),
-    price: zod.number(defaultRequiredMessage).positive().int().default(props.house?props.house.price:''),
-    size: zod.number(defaultRequiredMessage).positive().int().default(props.house?props.house.size:''),
-    hasGarage: zod.boolean(defaultRequiredMessage).default(props.house?props.house.hasGarage:''),
-    bedrooms: zod.number(defaultRequiredMessage).positive().int().default(props.house?props.house.rooms.bedrooms:''),
-    bathrooms: zod.number(defaultRequiredMessage).positive().int().default(props.house?props.house.rooms.bathrooms:''),
-    constructionYear: zod.number(defaultRequiredMessage).positive().int().gt(1900).default(props.house?props.house.constructionYear:''),
-    description: zod.string(defaultRequiredMessage).nonempty(requiredMessage).default(props.house?props.house.description:'')
+    zip: zod
+      .string(defaultRequiredMessage)
+      .nonempty(requiredMessage)
+      .default(props.house ? props.house.location.zip : ''),
+    city: zod
+      .string(defaultRequiredMessage)
+      .nonempty(requiredMessage)
+      .default(props.house ? props.house.location.city : ''),
+    imagenValidation: zod
+      .string(defaultRequiredMessage)
+      .nonempty(requiredMessage)
+      .default(props.house ? props.house.image : ''),
+    price: zod
+      .number(defaultRequiredMessage)
+      .positive()
+      .int()
+      .default(props.house ? props.house.price : ''),
+    size: zod
+      .number(defaultRequiredMessage)
+      .positive()
+      .int()
+      .default(props.house ? props.house.size : ''),
+    hasGarage: zod
+      .boolean(defaultRequiredMessage)
+      .default(props.house ? props.house.hasGarage : ''),
+    bedrooms: zod
+      .number(defaultRequiredMessage)
+      .positive()
+      .int()
+      .default(props.house ? props.house.rooms.bedrooms : ''),
+    bathrooms: zod
+      .number(defaultRequiredMessage)
+      .positive()
+      .int()
+      .default(props.house ? props.house.rooms.bathrooms : ''),
+    constructionYear: zod
+      .number(defaultRequiredMessage)
+      .positive()
+      .int()
+      .gt(1900)
+      .default(props.house ? props.house.constructionYear : ''),
+    description: zod
+      .string(defaultRequiredMessage)
+      .nonempty(requiredMessage)
+      .default(props.house ? props.house.description : '')
   })
 )
 
@@ -59,10 +101,7 @@ const { value: bathrooms } = useField('bathrooms')
 const { value: constructionYear } = useField('constructionYear')
 const { value: description } = useField('description')
 
-
-
 const onSubmit = handleSubmit((values) => {
-
   props.onSave(values, image)
 })
 
@@ -147,9 +186,17 @@ function uploadImageInput(event) {
 
     <div class="control-field">
       <label>Upload picture (PNG or JPG)*</label>
-      <label for="file-upload" class="custom-file-upload">
-        <img v-if="imagePreview" :src="imagePreview" alt="" />
-        <img v-else src="../assets/ic_plus_grey@3x.png" alt="" />
+      <label class="custom-file-upload" for="file-upload">
+        <img class="custom-file-upload-img" v-if="imagePreview" :src="imagePreview" alt="" />
+
+        <div class="custom-file-upload empty-img"
+            v-else>
+          <img
+            
+            src="../assets/ic_plus_grey@3x.png"
+            alt=""
+          />
+        </div>
       </label>
       <input
         name="image"
@@ -192,8 +239,7 @@ function uploadImageInput(event) {
           :class="{ errorField: errors.hasGarage }"
           type="boolean"
         >
-          <option disabled value="">Please select one</option>
-          <option value="">Select</option>
+          <option disabled value="">Select one option </option>
           <option :value="true">Yes</option>
           <option :value="false">No</option>
         </select>
@@ -252,7 +298,6 @@ function uploadImageInput(event) {
   
   
 <style  scoped>
-
 .form {
   display: flex;
   flex-direction: column;
@@ -284,6 +329,10 @@ textarea {
   outline: none;
   border: none;
 }
+select{
+  color: gray;
+}
+
 textarea {
   padding-top: 20px;
 }
@@ -296,22 +345,24 @@ input[type='file'] {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px dashed #ccc;
   cursor: pointer;
   width: 15vh;
   height: 15vh;
   margin: 5px 0 0px 0;
 }
-.custom-file-upload img {
-  width: 50px;
-  height: 50px;
+.custom-file-upload-img {
+  width: 100%;
+  height: 100%;
+}
+.empty-img {
+  border: 2px dashed #ccc ;
 }
 
 textarea {
   border: none;
   height: 10vh;
 }
-
 @media screen and (min-width: 768px) {
+  
 }
 </style>

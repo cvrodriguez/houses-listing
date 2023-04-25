@@ -62,7 +62,7 @@ textarea.errorField,
 select.errorField, 
 input.errorField{
     border: 1px solid var(--element-primary-color);
-    /* border-color: var(--element-primary-color); */
+ 
 }
 
 textarea.errorField::placeholder,
