@@ -56,7 +56,7 @@ const editHouseButton = () =>{
           <p for="">{{ housesStore.house.size }} m2</p>
 
           <img src="../assets/ic_construction_date@3x.png" alt="" />
-          <p for="">Built in{{ housesStore.house.constructionYear }}</p>
+          <p for="">Built in {{ housesStore.house.constructionYear }}</p>
         </div>
         <div class="field-style">
           <img src="../assets/ic_bed@3x.png" alt="" />
