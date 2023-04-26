@@ -1,13 +1,19 @@
 <script setup>
-defineProps(['house'])
+import { useRouter } from 'vue-router'
+const props = defineProps(['house'])
+const router = useRouter()
+
+const goToDetailHouse = () => {
+  router.push(`/detail-listing/${props.house.id}`)
+}
 
 </script>
 
 <template>
-  <div class="card" >
-    <router-link :to="`/detail-listing/${house.id}`">
+  <div class="card" @click="goToDetailHouse()" >
+    
       <div class="img-container" :style="`background-image: url(${house.image})`"></div>
-    </router-link>
+    
 
     <div class="inf-container">
       <div class="title-and-icos">
@@ -42,6 +48,7 @@ defineProps(['house'])
   padding: 10px;
   border-radius: 8px;
   margin: 10px 0 10px 0;
+  cursor: pointer;
 }
 .img-container {
   width: 100px;
