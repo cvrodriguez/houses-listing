@@ -1,12 +1,10 @@
 <script setup>
 import Header from './components/HeaderComponent.vue'
 import Footer from './components/FooterComponent.vue'
-
 </script>
 
 <template>
   <div class="main-container">
-
     <Header></Header>
 
     <div class="components-container">
@@ -14,7 +12,6 @@ import Footer from './components/FooterComponent.vue'
     </div>
 
     <Footer></Footer>
-
   </div>
 </template>
 

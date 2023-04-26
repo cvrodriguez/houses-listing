@@ -27,14 +27,13 @@ const editListing = async (dataform, image) => {
 
 
 <template>
-  
   <div class="margin-content">
     <div class="title">
       <BackNavegation></BackNavegation>
       <h1>{{ headerNavStore.title }}</h1>
     </div>
     <div class="container">
-      <HouseForm :on-save="editListing" :house="house" ></HouseForm>
+      <HouseForm :on-save="editListing" :house="house"></HouseForm>
     </div>
   </div>
 </template>

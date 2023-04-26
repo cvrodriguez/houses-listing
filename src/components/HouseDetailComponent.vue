@@ -1,5 +1,5 @@
 <script setup>
-import { ref} from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useHousesStore } from '../stores/houses-store'
 import HouseDelete from '../components/HouseDeleteComponent.vue'
@@ -11,12 +11,12 @@ const props = defineProps(['house-id'])
 
 housesStore.houseIdState = parseInt(props.houseId)
 
-const deleteHouse = () =>{
-  deleteTrue.value = !deleteTrue.value 
+const deleteHouse = () => {
+  deleteTrue.value = !deleteTrue.value
 }
 
-const editHouseButton = () =>{
-  router.push({path:`/edit-listing/${props.houseId}`})
+const editHouseButton = () => {
+  router.push({ path: `/edit-listing/${props.houseId}` })
 }
 </script>
 
@@ -33,13 +33,13 @@ const editHouseButton = () =>{
           <h1>{{ housesStore.house.location.street }}</h1>
 
           <div class="icons-container" v-if="housesStore.house.madeByMe">
-           
-              <img @click="editHouseButton" src="../assets/ic_edit@3x.png" alt="" />
-
-           
-              <img src="../assets/ic_delete@3x.png" alt="" @click="deleteHouse" />
-              <HouseDelete :toggleGoBack="deleteHouse" :houseId="housesStore.house.id" v-show="deleteTrue"></HouseDelete>
-          
+            <img @click="editHouseButton" src="../assets/ic_edit@3x.png" alt="" />
+            <img src="../assets/ic_delete@3x.png" alt="" @click="deleteHouse" />
+            <HouseDelete
+              :toggleGoBack="deleteHouse"
+              :houseId="housesStore.house.id"
+              v-show="deleteTrue"
+            ></HouseDelete>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ const editHouseButton = () =>{
   justify-content: space-between;
   align-items: center;
 }
-.icons-container{
+.icons-container {
   display: flex;
   gap: 3rem;
 }
@@ -148,8 +148,8 @@ p {
   }
 
   .modification-section img {
-  width: 23px;
-  height: 25px;
-}
+    width: 23px;
+    height: 25px;
+  }
 }
 </style>

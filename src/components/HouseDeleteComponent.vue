@@ -4,16 +4,15 @@ import { useRouter } from 'vue-router'
 import { useHousesStore } from '../stores/houses-store'
 
 const router = useRouter()
-const props = defineProps(['houseId','toggleGoBack'])
+const props = defineProps(['houseId', 'toggleGoBack'])
 const housesStore = useHousesStore()
 
-
 const goBack = () => {
-  router.push({path: `/detail-listing/${props.houseId}`})
+  router.push({ path: `/detail-listing/${props.houseId}` })
   props.toggleGoBack()
 }
 
-const deleteHouseConfirmation = async () =>   {
+const deleteHouseConfirmation = async () => {
   await housesStore.deleteHouse(props.houseId)
   router.push({ path: '/' })
 }
@@ -45,8 +44,7 @@ const deleteHouseConfirmation = async () =>   {
   left: 0;
   right: 0;
   height: 100vh;
-  /* background: rgba(34, 34, 34, 0.75); */
-  background: rebeccapurple;
+  background: rgba(34, 34, 34, 0.75);
   background-color: rgba(0, 0, 0, 0.2);
 }
 .confirmation-container {
@@ -86,9 +84,7 @@ p {
   }
 
   .button-container {
-
-  width: 350px;
-
-}
+    width: 350px;
+  }
 }
 </style>

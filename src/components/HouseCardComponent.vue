@@ -13,7 +13,6 @@ const goToDetailHouse = () => {
   <div class="card" @click="goToDetailHouse()" >
     
       <div class="img-container" :style="`background-image: url(${house.image})`"></div>
-    
 
     <div class="inf-container">
       <div class="title-and-icos">
@@ -54,7 +53,6 @@ const goToDetailHouse = () => {
   width: 100px;
   height: 100px;
   justify-content: center;
-  /* background-image: url(`${house.image}`); */
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;

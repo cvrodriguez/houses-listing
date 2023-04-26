@@ -1,20 +1,17 @@
 <script setup>
 import HouseDetail from '../components/HouseDetailComponent.vue'
-import HouseCard from '../components/HouseCardComponent.vue'
 import BackNavegation from '../components/BackNavegationComponent.vue'
-// import HouseDelete from '../components/HouseDeleteComponent.vue'
 
 import { onMounted } from 'vue'
-import {useHeaderNavStore} from '../stores/header-nav'
-import {  useRoute } from 'vue-router'
-
+import { useHeaderNavStore } from '../stores/header-nav'
+import { useRoute } from 'vue-router'
 
 const headerNavStore = useHeaderNavStore()
 const route = useRoute()
 const id = route.params.id
 
 onMounted(() => {
- headerNavStore.title= ''
+  headerNavStore.title = ''
 })
 </script>
 
@@ -26,12 +23,9 @@ onMounted(() => {
 
       <div class="recommended-container">
         <h2>Recommended for you</h2>
-        <!-- <HouseCard></HouseCard> -->
       </div>
     </div>
   </div>
-
-  <!-- <HouseDelete></HouseDelete> -->
 </template>
 
 
@@ -54,9 +48,8 @@ onMounted(() => {
   .arrow-back {
     display: flex;
   }
-  .detail-and-recommended{
+  .detail-and-recommended {
     display: flex;
-    
   }
 
   .recommended-container {

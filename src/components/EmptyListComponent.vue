@@ -28,7 +28,6 @@
   object-fit: contain;
   height: 30vh;
   width: 100%;
-  /* height: 500px; */
 }
 
 .text {

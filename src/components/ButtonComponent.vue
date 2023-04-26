@@ -24,7 +24,6 @@ button.primary.inactive {
 }
 button.secondary.active {
   background: var(--element-primary-color);
-
 }
 button.secondary {
   background: var(--element-cuartiary-color);

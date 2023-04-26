@@ -3,24 +3,19 @@ import Button from '../components/ButtonComponent.vue'
 import Search from '../components/SearchComponent.vue'
 import HouseCard from '../components/HouseCardComponent.vue'
 import EmptyListComponent from '../components/EmptyListComponent.vue'
-
-
 import { onMounted, onBeforeMount } from 'vue'
 import { useHeaderNavStore } from '../stores/header-nav'
-import {useHousesStore} from '../stores/houses-store'
-
+import { useHousesStore } from '../stores/houses-store'
 
 const headerNavStore = useHeaderNavStore()
 const housesStore = useHousesStore()
-
-const isPice= () => housesStore.sortBy === 'price'
-
+const isPice = () => housesStore.sortBy === 'price'
 
 onMounted(() => {
   headerNavStore.title = 'Houses'
 })
+
 onBeforeMount(() => {
-  
   housesStore.fetchHouses()
 })
 </script>
@@ -37,16 +32,23 @@ onBeforeMount(() => {
       <div class="filter-section">
         <Search class="search-filter"></Search>
         <div class="filter-buttons">
-          <Button :class="`primary button ${isPice() ?'' :'inactive'}`" @click="housesStore.sortBy = 'price'" >Price</Button>
-          <Button :class="`secondary button ${isPice() ?'' :'active'}`" @click="housesStore.sortBy = 'size'">Size</Button>
+          <Button
+            :class="`primary button ${isPice() ? '' : 'inactive'}`"
+            @click="housesStore.sortBy = 'price'"
+            >Price</Button
+          >
+          <Button
+            :class="`secondary button ${isPice() ? '' : 'active'}`"
+            @click="housesStore.sortBy = 'size'"
+            >Size</Button
+          >
         </div>
-        
       </div>
-      <h2 v-if="housesStore.searchCriteria !== '' && housesStore.quantityHousesFound !== 0">{{ housesStore.quantityHousesFound }} results found</h2>
+      <h2 v-if="housesStore.searchCriteria !== '' && housesStore.quantityHousesFound !== 0">
+        {{ housesStore.quantityHousesFound }} results found
+      </h2>
       <EmptyListComponent v-if="housesStore.quantityHousesFound === 0"></EmptyListComponent>
       <HouseCard :key="h" v-for="h in housesStore.sortedHouses" :house="h"></HouseCard>
-     
-      <!-- <EmptyList></EmptyList> -->
     </div>
   </div>
 </template>

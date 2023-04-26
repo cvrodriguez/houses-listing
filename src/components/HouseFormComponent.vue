@@ -189,13 +189,8 @@ function uploadImageInput(event) {
       <label class="custom-file-upload" for="file-upload">
         <img class="custom-file-upload-img" v-if="imagePreview" :src="imagePreview" alt="" />
 
-        <div class="custom-file-upload empty-img"
-            v-else>
-          <img
-            
-            src="../assets/ic_plus_grey@3x.png"
-            alt=""
-          />
+        <div class="custom-file-upload empty-img" v-else>
+          <img src="../assets/ic_plus_grey@3x.png" alt="" />
         </div>
       </label>
       <input
@@ -239,7 +234,7 @@ function uploadImageInput(event) {
           :class="{ errorField: errors.hasGarage }"
           type="boolean"
         >
-          <option disabled value="">Select one option </option>
+          <option disabled value="">Select one option</option>
           <option :value="true">Yes</option>
           <option :value="false">No</option>
         </select>
@@ -329,7 +324,7 @@ textarea {
   outline: none;
   border: none;
 }
-select{
+select {
   color: gray;
 }
 
@@ -355,7 +350,7 @@ input[type='file'] {
   height: 100%;
 }
 .empty-img {
-  border: 2px dashed #ccc ;
+  border: 2px dashed #ccc;
 }
 
 textarea {
@@ -363,6 +358,5 @@ textarea {
   height: 10vh;
 }
 @media screen and (min-width: 768px) {
-  
 }
 </style>
