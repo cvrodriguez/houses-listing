@@ -6,13 +6,11 @@ const router = useRouter()
 const goToDetailHouse = () => {
   router.push(`/detail-listing/${props.house.id}`)
 }
-
 </script>
 
 <template>
-  <div class="card" @click="goToDetailHouse()" >
-    
-      <div class="img-container" :style="`background-image: url(${house.image})`"></div>
+  <div class="card" @click="goToDetailHouse()">
+    <div class="img-container" :style="`background-image: url(${house.image})`"></div>
 
     <div class="inf-container">
       <div class="title-and-icos">
@@ -20,10 +18,10 @@ const goToDetailHouse = () => {
         <div class="icos">
           <img v-if="house.madeByMe" src="../assets/ic_edit@3x.png" alt="" />
           <img v-if="house.madeByMe" src="../assets/ic_delete@3x.png" alt="" />
-        </div>  
+        </div>
       </div>
 
-      <p class="price">€{{house.price  }}</p>
+      <p class="price">€{{ house.price }}</p>
       <p class="address">{{ house.location.zip }} {{ house.location.city }}</p>
 
       <div class="utilitis">
@@ -37,7 +35,6 @@ const goToDetailHouse = () => {
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .card {
@@ -57,7 +54,6 @@ const goToDetailHouse = () => {
   background-size: cover;
   border-radius: 5px;
 }
-
 .inf-container {
   margin-left: 15px;
   flex-grow: 1;
@@ -81,7 +77,6 @@ const goToDetailHouse = () => {
 .inf-container h2 {
   margin: 0;
 }
-
 .price {
   margin-top: 8px;
   font-size: 14px;

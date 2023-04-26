@@ -1,8 +1,7 @@
-<script setup>
-</script>
+<script setup></script>
+
 <template>
   <div class="container">
-
     <div class="img-empty-list">
       <img src="../assets/img_empty_houses@3x.png" />
     </div>
@@ -11,7 +10,6 @@
       <h2>No result found.</h2>
       <h2>Please try another keyword.</h2>
     </div>
-    
   </div>
 </template>
 

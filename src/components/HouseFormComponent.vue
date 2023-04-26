@@ -1,20 +1,15 @@
 <script setup>
 import { ref } from 'vue'
-
 import Button from './ButtonComponent.vue'
-
 import { useField, useForm } from 'vee-validate'
 import { toFormValidator } from '@vee-validate/zod'
 import * as zod from 'zod'
 
 const props = defineProps(['onSave', 'house'])
-
 const requiredMessage = 'Required field missing.'
 const defaultRequiredMessage = { required_error: requiredMessage }
-
 const defaultHouseNumber = ref()
 const defaultHouseStreetName = ref()
-
 const image = ref()
 const imagePreview = ref()
 
@@ -86,7 +81,6 @@ const validationSchema = toFormValidator(
 )
 
 const { handleSubmit, errors } = useForm({ validationSchema })
-
 const { value: streetName } = useField('streetName')
 const { value: houseNumber } = useField('houseNumber')
 const { value: numberAddition } = useField('numberAddition')
@@ -108,9 +102,7 @@ const onSubmit = handleSubmit((values) => {
 function uploadImageInput(event) {
   if (event.target.files[0]) {
     imagenValidation.value = event.target.files[0].name
-
     image.value = event.target.files[0]
-
     const reader = new FileReader()
     reader.addEventListener('load', (e) => {
       imagePreview.value = e.target.result
@@ -301,7 +293,6 @@ function uploadImageInput(event) {
   display: flex;
   gap: 10px;
 }
-
 .control-field {
   display: flex;
   flex-direction: column;

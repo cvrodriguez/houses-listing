@@ -25,7 +25,6 @@ const editListing = async (dataform, image) => {
 }
 </script>
 
-
 <template>
   <div class="margin-content">
     <div class="title">
@@ -38,8 +37,6 @@ const editListing = async (dataform, image) => {
   </div>
 </template>
 
-
-
 <style  scoped>
 .title {
   display: none;
@@ -50,7 +47,6 @@ const editListing = async (dataform, image) => {
   display: flex;
   flex-direction: column;
 }
-
 .container::before {
   content: '';
   position: fixed;
@@ -64,65 +60,6 @@ const editListing = async (dataform, image) => {
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: contain;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-}
-.horizontal-group-control-field {
-  display: flex;
-  gap: 10px;
-}
-
-.control-field {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding-bottom: 20px;
-}
-
-label {
-  font-size: 12px;
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-input,
-select,
-textarea {
-  border-radius: 8px;
-  height: 5vh;
-  padding-left: 20px;
-  outline: none;
-  border: none;
-}
-textarea {
-  padding-top: 20px;
-}
-
-input[type='file'] {
-  display: none;
-}
-
-.custom-file-upload {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px dashed #ccc;
-  cursor: pointer;
-  width: 15vh;
-  height: 15vh;
-  margin: 5px 0 0px 0;
-}
-.custom-file-upload img {
-  width: 50px;
-  height: 50px;
-}
-
-textarea {
-  border: none;
-  height: 10vh;
 }
 
 @media screen and (min-width: 768px) {

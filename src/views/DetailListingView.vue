@@ -1,7 +1,6 @@
 <script setup>
 import HouseDetail from '../components/HouseDetailComponent.vue'
 import BackNavegation from '../components/BackNavegationComponent.vue'
-
 import { onMounted } from 'vue'
 import { useHeaderNavStore } from '../stores/header-nav'
 import { useRoute } from 'vue-router'
@@ -28,8 +27,6 @@ onMounted(() => {
   </div>
 </template>
 
-
-
 <style scoped>
 .arrow-back {
   display: none;
@@ -51,7 +48,6 @@ onMounted(() => {
   .detail-and-recommended {
     display: flex;
   }
-
   .recommended-container {
     min-width: 27rem;
   }

@@ -15,7 +15,6 @@ import Footer from './components/FooterComponent.vue'
   </div>
 </template>
 
-
 <style scoped>
 .main-container {
   min-height: 100vh;
@@ -25,8 +24,5 @@ import Footer from './components/FooterComponent.vue'
   flex-direction: column;
   padding-bottom: 10vh;
   min-height: 80vh;
-}
-.filter-buttons {
-  display: flex;
 }
 </style>

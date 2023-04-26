@@ -1,11 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import BackNavegation from '../components/BackNavegationComponent.vue'
-
 import { onMounted } from 'vue'
 import { useHeaderNavStore } from '../stores/header-nav'
 import { useHousesStore } from '../stores/houses-store'
-
 import HouseForm from '../components/HouseFormComponent.vue'
 
 const headerNavStore = useHeaderNavStore()
@@ -20,7 +18,6 @@ const addListing = async (dataform, image) => {
   await housesStore.addNewListing(dataform)
   const houseIdToGo = housesStore.newHouseState.id
   await housesStore.uploadImage(houseIdToGo, image.value)
-
   router.push({ path: `/detail-listing/${houseIdToGo}`, replace: true })
 }
 </script>
@@ -47,7 +44,6 @@ const addListing = async (dataform, image) => {
   display: flex;
   flex-direction: column;
 }
-
 .container::before {
   content: '';
   position: fixed;

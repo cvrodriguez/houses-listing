@@ -5,8 +5,6 @@ import AboutView from '../views/AboutView.vue'
 import DetailListingView from '../views/DetailListingView.vue'
 import EditListingView from '../views/EditListingView.vue'
 
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -35,8 +33,6 @@ const router = createRouter({
       name: 'edit-listing',
       component: EditListingView
     },
-   
-   
   ]
 })
 

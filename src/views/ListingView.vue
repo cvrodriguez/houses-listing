@@ -53,13 +53,10 @@ onBeforeMount(() => {
   </div>
 </template>
 
-
-
 <style  scoped>
 .filter-buttons {
   display: flex;
 }
-
 .desktop-title-and-create-button {
   display: none;
 }
@@ -70,7 +67,6 @@ onBeforeMount(() => {
     justify-content: space-between;
     align-items: center;
   }
-
   .button-create {
     width: 10rem;
   }
@@ -78,7 +74,6 @@ onBeforeMount(() => {
     display: flex;
     justify-content: space-between;
   }
-
   .filter-buttons {
     display: flex;
   }

@@ -1,17 +1,13 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-   <div class="back-navegation">
-        <router-link to="/">
-          <img src="../assets/ic_back_grey@3x.png" alt="" />
-        </router-link>
-        <label for="">Back to the overview</label>
-      </div>
+  <div class="back-navegation">
+    <router-link to="/">
+      <img src="../assets/ic_back_grey@3x.png" alt="" />
+    </router-link>
+    <label for="">Back to the overview</label>
+  </div>
 </template>
-
-
 
 <style scoped>
 @media screen and (min-width: 768px) {

@@ -82,7 +82,6 @@ p {
     max-width: 40rem;
     margin-top: 12rem;
   }
-
   .button-container {
     width: 350px;
   }

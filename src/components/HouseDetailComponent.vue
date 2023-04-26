@@ -75,7 +75,6 @@ const editHouseButton = () => {
   </div>
 </template>
 
-
 <style scoped>
 .arrow-back {
   display: none;
@@ -90,7 +89,6 @@ const editHouseButton = () => {
   margin-bottom: -14vh;
   z-index: -1;
 }
-
 .container-inf {
   padding: 20px;
   border-radius: 20px 20px 0 0;
@@ -105,7 +103,6 @@ const editHouseButton = () => {
   display: flex;
   gap: 3rem;
 }
-
 .modification-section img {
   width: 16px;
   height: 18px;
@@ -128,7 +125,6 @@ p {
     flex-direction: column;
     min-width: 40rem;
   }
-
   .house-imagen-background {
     top: 2rem;
   }
@@ -140,13 +136,11 @@ p {
     margin-bottom: 2vh;
     height: 55vh;
   }
-
   .container-inf {
     widows: 100%;
     border-radius: 0 0 0 0;
     background: var(--element-background2-color);
   }
-
   .modification-section img {
     width: 23px;
     height: 25px;

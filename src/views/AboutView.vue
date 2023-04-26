@@ -1,11 +1,11 @@
 <script setup>
 import { onMounted } from 'vue'
-import {useHeaderNavStore} from '../stores/header-nav'
+import { useHeaderNavStore } from '../stores/header-nav'
 
 const headerNavStore = useHeaderNavStore()
 
 onMounted(() => {
-  headerNavStore.title= 'About'
+  headerNavStore.title = 'About'
 })
 </script>
 
@@ -40,7 +40,6 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .sign p {
