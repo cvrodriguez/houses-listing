@@ -39,13 +39,14 @@ const deleteHouseConfirmation = async () =>   {
 
 <style scoped>
 .delete-container {
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   right: 0;
   height: 100vh;
-  background: rgba(34, 34, 34, 0.75);
+  /* background: rgba(34, 34, 34, 0.75); */
+  background: rebeccapurple;
   background-color: rgba(0, 0, 0, 0.2);
 }
 .confirmation-container {
