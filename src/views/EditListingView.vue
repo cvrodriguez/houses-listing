@@ -3,24 +3,17 @@ import { useRouter } from 'vue-router'
 import BackNavegation from '../components/BackNavegationComponent.vue'
 import { useHousesStore } from '../stores/houses-store'
 import HouseForm from '../components/HouseFormComponent.vue'
-import { onMounted } from 'vue'
-import { useHeaderNavStore } from '../stores/header-nav'
+import NavegationComponent from '../components/NavegationComponent.vue'
 
 const housesStore = useHousesStore()
 const house = housesStore.house
 const router = useRouter()
-const headerNavStore = useHeaderNavStore()
-
-onMounted(() => {
-  headerNavStore.title = 'Edit listing'
-})
 
 const editListing = async (dataform, image) => {
   await housesStore.editListing(dataform)
   if (image) {
     await housesStore.uploadImage(house.id, image.value)
   }
-
   router.push({ path: `/detail-listing/${house.id}`, replace: true })
 }
 </script>
@@ -29,7 +22,7 @@ const editListing = async (dataform, image) => {
   <div class="margin-content">
     <div class="title">
       <BackNavegation></BackNavegation>
-      <h1>{{ headerNavStore.title }}</h1>
+      <NavegationComponent></NavegationComponent>
     </div>
     <div class="container">
       <HouseForm :on-save="editListing" :house="house"></HouseForm>

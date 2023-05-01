@@ -11,17 +11,26 @@ const router = createRouter({
     {
       path: '/',
       name: 'listing',
-      component: ListingView
+      component: ListingView,
+      meta: {
+        title:'Houses'
+      }
     },
     {
       path: '/create-new-listing',
       name: 'new-listing',
-      component: CreateListingView
+      component: CreateListingView,
+      meta: {
+        title:'Create new listing'
+      }
     },
     {
       path: '/about',
       name: 'about',
-      component: AboutView
+      component: AboutView,
+      meta: {
+        title:'About'
+      }
     },
     {
       path: '/detail-listing/:id',
@@ -31,7 +40,10 @@ const router = createRouter({
     {
       path: '/edit-listing/:id',
       name: 'edit-listing',
-      component: EditListingView
+      component: EditListingView,
+      meta: {
+        title:'Edit listing'
+      }
     },
   ]
 })

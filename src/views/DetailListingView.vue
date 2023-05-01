@@ -1,17 +1,11 @@
 <script setup>
 import HouseDetail from '../components/HouseDetailComponent.vue'
 import BackNavegation from '../components/BackNavegationComponent.vue'
-import { onMounted } from 'vue'
-import { useHeaderNavStore } from '../stores/header-nav'
 import { useRoute } from 'vue-router'
 
-const headerNavStore = useHeaderNavStore()
 const route = useRoute()
 const id = route.params.id
 
-onMounted(() => {
-  headerNavStore.title = ''
-})
 </script>
 
 <template>

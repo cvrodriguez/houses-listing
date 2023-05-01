@@ -2,18 +2,13 @@
 import Button from '../components/ButtonComponent.vue'
 import Search from '../components/SearchComponent.vue'
 import HouseCard from '../components/HouseCardComponent.vue'
+import NavegationComponent from '../components/NavegationComponent.vue'
 import EmptyListComponent from '../components/EmptyListComponent.vue'
-import { onMounted, onBeforeMount } from 'vue'
-import { useHeaderNavStore } from '../stores/header-nav'
+import {onBeforeMount } from 'vue'
 import { useHousesStore } from '../stores/houses-store'
 
-const headerNavStore = useHeaderNavStore()
 const housesStore = useHousesStore()
 const isPice = () => housesStore.sortBy === 'price'
-
-onMounted(() => {
-  headerNavStore.title = 'Houses'
-})
 
 onBeforeMount(() => {
   housesStore.fetchHouses()
@@ -24,7 +19,7 @@ onBeforeMount(() => {
   <div>
     <div class="margin-content">
       <div class="desktop-title-and-create-button">
-        <h1>{{ headerNavStore.title }}</h1>
+       <NavegationComponent></NavegationComponent>
         <router-link to="/create-new-listing">
           <Button class="post-primary button-create">+ CREATE NEW </Button>
         </router-link>

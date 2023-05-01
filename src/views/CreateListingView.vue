@@ -1,18 +1,12 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import BackNavegation from '../components/BackNavegationComponent.vue'
-import { onMounted } from 'vue'
-import { useHeaderNavStore } from '../stores/header-nav'
 import { useHousesStore } from '../stores/houses-store'
 import HouseForm from '../components/HouseFormComponent.vue'
+import NavegationComponent from '../components/NavegationComponent.vue'
 
-const headerNavStore = useHeaderNavStore()
 const housesStore = useHousesStore()
 const router = useRouter()
-
-onMounted(() => {
-  headerNavStore.title = 'Create new listing'
-})
 
 const addListing = async (dataform, image) => {
   await housesStore.addNewListing(dataform)
@@ -26,7 +20,7 @@ const addListing = async (dataform, image) => {
   <div class="margin-content">
     <div class="title">
       <BackNavegation></BackNavegation>
-      <h1>{{ headerNavStore.title }}</h1>
+      <NavegationComponent></NavegationComponent>
     </div>
     <div class="container">
       <HouseForm :on-save="addListing"></HouseForm>

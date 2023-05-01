@@ -1,18 +1,13 @@
-
 <script setup>
-import { useHeaderNavStore } from '../stores/header-nav'
-
-const headerNavStore = useHeaderNavStore()
+import { useRoute } from 'vue-router'
+const route = useRoute()
 </script>
+
 <template>
-  
-<h1>{{ headerNavStore.title }}</h1>
+<h1>{{ route.meta.title }}</h1>
 </template>
 
-
-
 <style scoped>
-
 </style>
 
 
