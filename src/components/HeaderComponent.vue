@@ -1,8 +1,7 @@
 <script setup>
 import { RouterLink, useRouter } from 'vue-router'
-import { useHeaderNavStore } from '../stores/header-nav'
+import NavegationComponent from './NavegationComponent.vue'
 
-const headerNavStore = useHeaderNavStore()
 const router = useRouter()
 const isDetail = () => router.currentRoute.value.name === 'detail-listing'
 
@@ -22,8 +21,8 @@ const goBack = () => {
           v-else-if="router.currentRoute.value.name != 'listing'"
         />
         <div class="empty-image" v-else></div>
-        <h1>{{ headerNavStore.title }}</h1>
 
+        <NavegationComponent></NavegationComponent>
         <RouterLink to="/create-new-listing">
           <img src="../assets/ic_plus_grey@3x.png" />
         </RouterLink>
