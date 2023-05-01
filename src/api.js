@@ -14,13 +14,6 @@ const getListing = async () => {
     return response.data
 }
 
-const configPost = {
-    maxBodyLength: Infinity,
-    headers: {
-        'X-Api-Key': '6hZcRCabLp0nStN8rvsIBiHFM1lU_Vxj',
-    }
-};
-
 const createListing = async (houseData) => {
 
     var data = new FormData();
@@ -37,7 +30,7 @@ const createListing = async (houseData) => {
     data.append('hasGarage', houseData.hasGarage);
     data.append('description', houseData.description);
 
-    const response = await axios.post(`${url_api}/houses`, data, configPost)
+    const response = await axios.post(`${url_api}/houses`, data, config)
     return response.data
 }
 
@@ -57,7 +50,7 @@ const editListing = async (houseData, id) => {
     data.append('hasGarage', houseData.hasGarage);
     data.append('description', houseData.description);
 
-    const response = await axios.post(`${url_api}/houses/${id}`, data, configPost)
+    const response = await axios.post(`${url_api}/houses/${id}`, data, config)
     return response.data
 }
 
@@ -67,7 +60,7 @@ const uploadImage = async (id, image) => {
     var data = new FormData();
     data.append('image', image)
 
-    const response = await axios.post(`${url_api}/houses/${id}/upload`, data, configPost)
+    const response = await axios.post(`${url_api}/houses/${id}/upload`, data, config)
     return response.data
 }
 

@@ -40,7 +40,7 @@ const validationSchema = toFormValidator(
       .string(defaultRequiredMessage)
       .nonempty(requiredMessage)
       .default(props.house ? props.house.location.city : ''),
-    imagenValidation: zod
+    imageValidation: zod
       .string(defaultRequiredMessage)
       .nonempty(requiredMessage)
       .default(props.house ? props.house.image : ''),
@@ -55,8 +55,8 @@ const validationSchema = toFormValidator(
       .int()
       .default(props.house ? props.house.size : ''),
     hasGarage: zod
-      .string(defaultRequiredMessage)
-      .default(props.house ? props.house.hasGarage : ''),
+      .boolean(defaultRequiredMessage)
+      .default(props.house ? props.house.hasGarage : 'No'),
     bedrooms: zod
       .number(defaultRequiredMessage)
       .positive()
@@ -86,7 +86,7 @@ const { value: houseNumber } = useField('houseNumber')
 const { value: numberAddition } = useField('numberAddition')
 const { value: zip } = useField('zip')
 const { value: city } = useField('city')
-const { value: imagenValidation } = useField('imagenValidation')
+const { value: imageValidation } = useField('imageValidation')
 const { value: price } = useField('price')
 const { value: size } = useField('size')
 const { value: hasGarage } = useField('hasGarage')
@@ -101,7 +101,7 @@ const onSubmit = handleSubmit((values) => {
 
 function uploadImageInput(event) {
   if (event.target.files[0]) {
-    imagenValidation.value = event.target.files[0].name
+    imageValidation.value = event.target.files[0].name
     image.value = event.target.files[0]
     const reader = new FileReader()
     reader.addEventListener('load', (e) => {
@@ -109,7 +109,7 @@ function uploadImageInput(event) {
     })
     reader.readAsDataURL(image.value)
   } else {
-    imagenValidation.value = ''
+    imageValidation.value = ''
     imagePreview.value = undefined
     image.value = undefined
     return
@@ -188,11 +188,11 @@ function uploadImageInput(event) {
       <input
         name="image"
         @change="uploadImageInput"
-        :class="{ errorField: errors.imagenValidation }"
+        :class="{ errorField: errors.imageValidation }"
         type="file"
         id="file-upload"
       />
-      <span class="errorMessage">{{ errors.imagenValidation }}</span>
+      <span class="errorMessage">{{ errors.imageValidation }}</span>
     </div>
 
     <div class="control-field">
@@ -224,7 +224,6 @@ function uploadImageInput(event) {
           name="hasGarage"
           v-model="hasGarage"
           :class="{ errorField: errors.hasGarage }"
-        
         >
           <option disabled value="">Select one option</option>
           <option :value="'true'">Yes</option>
