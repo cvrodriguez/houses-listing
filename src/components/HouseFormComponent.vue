@@ -56,7 +56,7 @@ const validationSchema = toFormValidator(
       .default(props.house ? props.house.size : ''),
     hasGarage: zod
       .boolean(defaultRequiredMessage)
-      .default(props.house ? props.house.hasGarage : 'No'),
+      .default(props.house ? props.house.hasGarage : false),
     bedrooms: zod
       .number(defaultRequiredMessage)
       .positive()
@@ -226,8 +226,8 @@ function uploadImageInput(event) {
           :class="{ errorField: errors.hasGarage }"
         >
           <option disabled value="">Select one option</option>
-          <option :value="'true'">Yes</option>
-          <option :value="'false'">No</option>
+          <option :value="true">Yes</option>
+          <option :value="false">No</option>
         </select>
         <span class="errorMessage">{{ errors.hasGarage }}</span>
       </div>
