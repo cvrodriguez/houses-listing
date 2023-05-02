@@ -1,5 +1,6 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import {onBeforeMount} from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import BackNavegation from '../components/BackNavegationComponent.vue'
 import { useHousesStore } from '../stores/houses-store'
 import HouseForm from '../components/HouseFormComponent.vue'
@@ -8,6 +9,8 @@ import NavegationComponent from '../components/NavegationComponent.vue'
 const housesStore = useHousesStore()
 const house = housesStore.house
 const router = useRouter()
+const route = useRoute()
+const id = route.params.id
 
 const editListing = async (dataform, image) => {
   await housesStore.editListing(dataform)
@@ -16,6 +19,11 @@ const editListing = async (dataform, image) => {
   }
   router.push({ path: `/detail-listing/${house.id}`, replace: true })
 }
+
+onBeforeMount(() => {
+  housesStore.fetchHouses()
+  housesStore.houseIdState = parseInt(id)
+})
 </script>
 
 <template>
@@ -25,7 +33,7 @@ const editListing = async (dataform, image) => {
       <NavegationComponent></NavegationComponent>
     </div>
     <div class="container">
-      <HouseForm :on-save="editListing" :house="house"></HouseForm>
+      <HouseForm v-if="housesStore.house" :on-save="editListing" :house="housesStore.house"></HouseForm>
     </div>
   </div>
 </template>
