@@ -1,10 +1,28 @@
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import HouseDeleteComponent from './HouseDeleteComponent.vue'
+
 const props = defineProps(['house'])
 const router = useRouter()
+const deleteTrue = ref(false)
 
 const goToDetailHouse = () => {
   router.push(`/detail-listing/${props.house.id}`)
+  console.log("soy metiche")
+}
+
+const handleImageClick = async (imageName) => {
+  if (imageName === 'edit') {
+    router.push(`/edit-listing/${props.house.id}`)
+  } else if (imageName === 'delete') {
+    deleteHouse()
+    
+  }
+}
+
+const deleteHouse = () => {
+  deleteTrue.value = !deleteTrue.value
 }
 </script>
 
@@ -16,8 +34,23 @@ const goToDetailHouse = () => {
       <div class="title-and-icos">
         <h2>{{ house.location.street }}</h2>
         <div class="icos">
-          <img v-if="house.madeByMe" src="../assets/ic_edit@3x.png" alt="" />
-          <img v-if="house.madeByMe" src="../assets/ic_delete@3x.png" alt="" />
+          <img
+            @click.stop="handleImageClick('edit')"
+            v-if="house.madeByMe"
+            src="../assets/ic_edit@3x.png"
+            alt=""
+          />
+          <img
+            @click.stop="handleImageClick('delete')"
+            v-if="house.madeByMe"
+            src="../assets/ic_delete@3x.png"
+            alt=""
+          />
+          <HouseDeleteComponent
+            v-show="deleteTrue"
+            :houseId="house.id"
+            :toggleGoBack="deleteHouse"
+          ></HouseDeleteComponent>
         </div>
       </div>
 

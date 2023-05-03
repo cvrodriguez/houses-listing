@@ -8,7 +8,7 @@ const props = defineProps(['houseId', 'toggleGoBack'])
 const housesStore = useHousesStore()
 
 const goBack = () => {
-  router.push({ path: `/detail-listing/${props.houseId}` })
+  // router.push({ path: `/detail-listing/${props.houseId}` })
   props.toggleGoBack()
 }
 
@@ -19,7 +19,7 @@ const deleteHouseConfirmation = async () => {
 </script>
 
 <template>
-  <div class="delete-container">
+  <div class="delete-container" @click.stop="">
     <div class="confirmation-container margin-content">
       <h1>Delete listing</h1>
 
@@ -29,8 +29,8 @@ const deleteHouseConfirmation = async () => {
       </div>
 
       <div class="button-container">
-        <Button @click="deleteHouseConfirmation" class="post-primary">YES, DELETE</Button>
-        <Button @click="goBack" class="post-secondary">GO BACK</Button>
+        <Button @click.stop="deleteHouseConfirmation" class="post-primary">YES, DELETE</Button>
+        <Button @click.stop="goBack" class="post-secondary">GO BACK</Button>
       </div>
     </div>
   </div>
