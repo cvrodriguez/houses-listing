@@ -21,7 +21,7 @@ const editHouseButton = () => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" v-if="housesStore.house">
     <div class="container-house-detail">
       <div
         class="house-imagen-background"
