@@ -4,7 +4,7 @@
   <button><slot></slot></button>
 </template>
 
-<style  scoped>
+<style scoped>
 button {
   width: 100%;
   height: 2.5rem;

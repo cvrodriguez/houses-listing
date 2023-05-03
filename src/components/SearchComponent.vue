@@ -1,4 +1,3 @@
-
 <script setup>
 import { useHousesStore } from '../stores/houses-store'
 const housesStore = useHousesStore()
@@ -16,7 +15,7 @@ const housesStore = useHousesStore()
   </div>
 </template>
 
-<style  scoped>
+<style scoped>
 .container {
   display: flex;
   align-items: center;

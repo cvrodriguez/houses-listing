@@ -4,7 +4,7 @@ import Search from '../components/SearchComponent.vue'
 import HouseCard from '../components/HouseCardComponent.vue'
 import NavegationComponent from '../components/NavegationComponent.vue'
 import EmptyListComponent from '../components/EmptyListComponent.vue'
-import {onBeforeMount } from 'vue'
+import { onBeforeMount } from 'vue'
 import { useHousesStore } from '../stores/houses-store'
 
 const housesStore = useHousesStore()
@@ -15,11 +15,11 @@ onBeforeMount(() => {
 })
 </script>
 
-<template >
+<template>
   <div>
     <div class="margin-content">
       <div class="desktop-title-and-create-button">
-       <NavegationComponent></NavegationComponent>
+        <NavegationComponent></NavegationComponent>
         <router-link to="/create-new-listing">
           <Button class="post-primary button-create">+ CREATE NEW </Button>
         </router-link>
@@ -48,7 +48,7 @@ onBeforeMount(() => {
   </div>
 </template>
 
-<style  scoped>
+<style scoped>
 .filter-buttons {
   display: flex;
 }

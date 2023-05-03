@@ -12,9 +12,8 @@ const goBack = () => {
 const activeLink = ref('houses')
 
 function setActiveLink(link) {
-      activeLink.value = link
-    }
-
+  activeLink.value = link
+}
 </script>
 
 <template>
@@ -38,8 +37,18 @@ function setActiveLink(link) {
 
     <div class="desktop">
       <img src="../assets/img_logo_dtt@3x.png" alt="" />
-      <router-link :class="{ active: activeLink === 'houses' }" @click="setActiveLink('houses')"  to="/">Houses</router-link>
-      <router-link :class="{ active: activeLink === 'about' }" @click="setActiveLink('about')" to="/about">About</router-link>
+      <router-link
+        :class="{ active: activeLink === 'houses' }"
+        @click="setActiveLink('houses')"
+        to="/"
+        >Houses</router-link
+      >
+      <router-link
+        :class="{ active: activeLink === 'about' }"
+        @click="setActiveLink('about')"
+        to="/about"
+        >About</router-link
+      >
     </div>
   </div>
 </template>
@@ -98,6 +107,5 @@ img,
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
- 
 }
 </style>

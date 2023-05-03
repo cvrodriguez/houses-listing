@@ -1,5 +1,5 @@
 <script setup>
-import {onBeforeMount} from 'vue'
+import { onBeforeMount } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import BackNavegation from '../components/BackNavegationComponent.vue'
 import { useHousesStore } from '../stores/houses-store'
@@ -33,12 +33,16 @@ onBeforeMount(() => {
       <NavegationComponent></NavegationComponent>
     </div>
     <div class="container">
-      <HouseForm v-if="housesStore.house" :on-save="editListing" :house="housesStore.house"></HouseForm>
+      <HouseForm
+        v-if="housesStore.house"
+        :on-save="editListing"
+        :house="housesStore.house"
+      ></HouseForm>
     </div>
   </div>
 </template>
 
-<style  scoped>
+<style scoped>
 .title {
   display: none;
 }

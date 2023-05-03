@@ -9,7 +9,7 @@ const deleteTrue = ref(false)
 
 const goToDetailHouse = () => {
   router.push(`/detail-listing/${props.house.id}`)
-  console.log("soy metiche")
+  console.log('soy metiche')
 }
 
 const handleImageClick = async (imageName) => {
@@ -17,7 +17,6 @@ const handleImageClick = async (imageName) => {
     router.push(`/edit-listing/${props.house.id}`)
   } else if (imageName === 'delete') {
     deleteHouse()
-    
   }
 }
 

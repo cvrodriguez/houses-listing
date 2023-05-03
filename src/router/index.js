@@ -13,7 +13,7 @@ const router = createRouter({
       name: 'listing',
       component: ListingView,
       meta: {
-        title:'Houses'
+        title: 'Houses'
       }
     },
     {
@@ -21,7 +21,7 @@ const router = createRouter({
       name: 'new-listing',
       component: CreateListingView,
       meta: {
-        title:'Create new listing'
+        title: 'Create new listing'
       }
     },
     {
@@ -29,7 +29,7 @@ const router = createRouter({
       name: 'about',
       component: AboutView,
       meta: {
-        title:'About'
+        title: 'About'
       }
     },
     {
@@ -42,9 +42,9 @@ const router = createRouter({
       name: 'edit-listing',
       component: EditListingView,
       meta: {
-        title:'Edit listing'
+        title: 'Edit listing'
       }
-    },
+    }
   ]
 })
 

@@ -117,7 +117,6 @@ function uploadImageInput(event) {
 }
 </script>
 
-
 <template>
   <form @submit="onSubmit" class="form">
     <div class="control-field">
@@ -220,11 +219,7 @@ function uploadImageInput(event) {
       </div>
       <div class="control-field">
         <label for="">Garage*</label>
-        <select
-          name="hasGarage"
-          v-model="hasGarage"
-          :class="{ errorField: errors.hasGarage }"
-        >
+        <select name="hasGarage" v-model="hasGarage" :class="{ errorField: errors.hasGarage }">
           <option disabled value="">Select one option</option>
           <option :value="true">Yes</option>
           <option :value="false">No</option>
@@ -281,9 +276,8 @@ function uploadImageInput(event) {
     <Button class="post-primary">Post</Button>
   </form>
 </template>
-  
-  
-<style  scoped>
+
+<style scoped>
 .form {
   display: flex;
   flex-direction: column;

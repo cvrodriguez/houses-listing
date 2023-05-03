@@ -28,7 +28,7 @@ const addListing = async (dataform, image) => {
   </div>
 </template>
 
-<style  scoped>
+<style scoped>
 .title {
   display: none;
 }
