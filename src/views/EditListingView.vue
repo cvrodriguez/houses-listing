@@ -1,13 +1,12 @@
 <script setup>
 import { onBeforeMount } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import BackNavegation from '../components/BackNavegationComponent.vue'
+import BackNavigation from '../components/BackNavigationComponent.vue'
 import { useHousesStore } from '../stores/houses-store'
 import HouseForm from '../components/HouseFormComponent.vue'
-import NavegationComponent from '../components/NavegationComponent.vue'
+import NavigationComponent from '../components/NavigationComponent.vue'
 
 const housesStore = useHousesStore()
-const house = housesStore.house
 const router = useRouter()
 const route = useRoute()
 const id = route.params.id
@@ -15,9 +14,9 @@ const id = route.params.id
 const editListing = async (dataform, image) => {
   await housesStore.editListing(dataform)
   if (image) {
-    await housesStore.uploadImage(house.id, image.value)
+    await housesStore.uploadImage(housesStore.house.id, image.value)
   }
-  router.push({ path: `/detail-listing/${house.id}`, replace: true })
+  router.push({ path: `/detail-listing/${housesStore.house.id}`, replace: true })
 }
 
 onBeforeMount(() => {
@@ -29,8 +28,8 @@ onBeforeMount(() => {
 <template>
   <div class="margin-content">
     <div class="title">
-      <BackNavegation></BackNavegation>
-      <NavegationComponent></NavegationComponent>
+      <BackNavigation></BackNavigation>
+      <NavigationComponent></NavigationComponent>
     </div>
     <div class="container">
       <HouseForm

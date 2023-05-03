@@ -1,6 +1,6 @@
 <script setup>
 import HouseDetail from '../components/HouseDetailComponent.vue'
-import BackNavegation from '../components/BackNavegationComponent.vue'
+import BackNavigation from '../components/BackNavigationComponent.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -9,7 +9,7 @@ const id = route.params.id
 
 <template>
   <div class="listing-container">
-    <BackNavegation class="arrow-back"></BackNavegation>
+    <BackNavigation class="arrow-back"></BackNavigation>
     <div class="detail-and-recommended">
       <HouseDetail :house-id="id"></HouseDetail>
 

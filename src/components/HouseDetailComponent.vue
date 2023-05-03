@@ -24,7 +24,7 @@ const editHouseButton = () => {
   <div class="container" v-if="housesStore.house">
     <div class="container-house-detail">
       <div
-        class="house-imagen-background"
+        class="house-image-background"
         :style="`background-image: url(${housesStore.house.image})`"
       ></div>
 
@@ -79,7 +79,7 @@ const editHouseButton = () => {
 .arrow-back {
   display: none;
 }
-.house-imagen-background {
+.house-image-background {
   position: relative;
   top: -10vh;
   width: 100%;
@@ -125,14 +125,14 @@ p {
     flex-direction: column;
     min-width: 40rem;
   }
-  .house-imagen-background {
+  .house-image-background {
     top: 2rem;
   }
   .container-house-detail {
     display: flex;
     flex-direction: column;
   }
-  .house-imagen-background {
+  .house-image-background {
     margin-bottom: 2vh;
     height: 55vh;
   }

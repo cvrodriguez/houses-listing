@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="back-navegation">
+  <div class="back-navigation">
     <router-link to="/">
       <img src="../assets/ic_back_grey@3x.png" alt="" />
     </router-link>
@@ -11,15 +11,15 @@
 
 <style scoped>
 @media screen and (min-width: 768px) {
-  .back-navegation {
+  .back-navigation {
     display: flex;
     gap: 1rem;
   }
-  .back-navegation img {
+  .back-navigation img {
     width: 1rem;
     height: auto;
   }
-  .back-navegation label {
+  .back-navigation label {
     font-size: 16px;
   }
 }

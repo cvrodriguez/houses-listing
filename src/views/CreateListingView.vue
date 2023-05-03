@@ -1,9 +1,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
-import BackNavegation from '../components/BackNavegationComponent.vue'
+import BackNavigation from '../components/BackNavigationComponent.vue'
 import { useHousesStore } from '../stores/houses-store'
 import HouseForm from '../components/HouseFormComponent.vue'
-import NavegationComponent from '../components/NavegationComponent.vue'
+import NavigationComponent from '../components/NavigationComponent.vue'
 
 const housesStore = useHousesStore()
 const router = useRouter()
@@ -19,8 +19,8 @@ const addListing = async (dataform, image) => {
 <template>
   <div class="margin-content">
     <div class="title">
-      <BackNavegation></BackNavegation>
-      <NavegationComponent></NavegationComponent>
+      <BackNavigation></BackNavigation>
+      <NavigationComponent></NavigationComponent>
     </div>
     <div class="container">
       <HouseForm :on-save="addListing"></HouseForm>

@@ -36,8 +36,8 @@ export const useHousesStore = defineStore('houses-store', () => {
   }
 
   async function addNewListing(dataHouseForm) {
-    const housewithId = await api.createListing(dataHouseForm)
-    newHouseState.value = housewithId
+    const houseWithId = await api.createListing(dataHouseForm)
+    newHouseState.value = houseWithId
   }
 
   async function editListing(dataHouseForm) {

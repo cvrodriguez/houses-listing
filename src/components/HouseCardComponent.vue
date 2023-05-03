@@ -9,7 +9,6 @@ const deleteTrue = ref(false)
 
 const goToDetailHouse = () => {
   router.push(`/detail-listing/${props.house.id}`)
-  console.log('soy metiche')
 }
 
 const handleImageClick = async (imageName) => {
@@ -30,9 +29,9 @@ const deleteHouse = () => {
     <div class="img-container" :style="`background-image: url(${house.image})`"></div>
 
     <div class="inf-container">
-      <div class="title-and-icos">
+      <div class="title-and-icons">
         <h2>{{ house.location.street }}</h2>
-        <div class="icos">
+        <div class="icons">
           <img
             @click.stop="handleImageClick('edit')"
             v-if="house.madeByMe"
@@ -56,7 +55,7 @@ const deleteHouse = () => {
       <p class="price">€{{ house.price }}</p>
       <p class="address">{{ house.location.zip }} {{ house.location.city }}</p>
 
-      <div class="utilitis">
+      <div class="utilities">
         <img src="../assets/ic_bed@3x.png" alt="" />
         <span>{{ house.rooms.bedrooms }}</span>
         <img src="../assets/ic_bath@3x.png" alt="" />
@@ -90,17 +89,17 @@ const deleteHouse = () => {
   margin-left: 15px;
   flex-grow: 1;
 }
-.title-and-icos {
+.title-and-icons {
   display: flex;
   justify-content: space-between;
 }
-.icos {
+.icons {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
-.title-and-icos img {
+.title-and-icons img {
   width: 12px;
   height: 14px;
   margin-left: 0;
@@ -121,11 +120,11 @@ const deleteHouse = () => {
   font-size: 14px;
   font-weight: lighter;
 }
-.utilitis {
+.utilities {
   display: flex;
   gap: 10px;
 }
-.utilitis img {
+.utilities img {
   width: 14px;
   height: 14px;
 }

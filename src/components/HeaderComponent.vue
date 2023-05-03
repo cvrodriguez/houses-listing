@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
-import NavegationComponent from './NavegationComponent.vue'
+import NavigationComponent from './NavigationComponent.vue'
 
 const router = useRouter()
 const isDetail = () => router.currentRoute.value.name === 'detail-listing'
@@ -28,7 +28,7 @@ function setActiveLink(link) {
         />
         <div class="empty-image" v-else></div>
 
-        <NavegationComponent></NavegationComponent>
+        <NavigationComponent></NavigationComponent>
         <RouterLink to="/create-new-listing">
           <img src="../assets/ic_plus_grey@3x.png" />
         </RouterLink>
