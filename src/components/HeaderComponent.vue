@@ -1,13 +1,20 @@
 <script setup>
+import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import NavegationComponent from './NavegationComponent.vue'
 
 const router = useRouter()
 const isDetail = () => router.currentRoute.value.name === 'detail-listing'
-
 const goBack = () => {
   router.go(-1)
 }
+
+const activeLink = ref('houses')
+
+function setActiveLink(link) {
+      activeLink.value = link
+    }
+
 </script>
 
 <template>
@@ -31,8 +38,8 @@ const goBack = () => {
 
     <div class="desktop">
       <img src="../assets/img_logo_dtt@3x.png" alt="" />
-      <router-link to="/">Houses</router-link>
-      <router-link to="/about">About</router-link>
+      <router-link :class="{ active: activeLink === 'houses' }" @click="setActiveLink('houses')"  to="/">Houses</router-link>
+      <router-link :class="{ active: activeLink === 'about' }" @click="setActiveLink('about')" to="/about">About</router-link>
     </div>
   </div>
 </template>
@@ -86,10 +93,11 @@ img,
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-weight: normal;
   }
-  a.router-link-active {
+  a.active {
     color: var(--font-secondary-color);
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
+ 
 }
 </style>
