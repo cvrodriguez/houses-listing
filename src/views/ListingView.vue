@@ -4,11 +4,16 @@ import Search from '../components/SearchComponent.vue'
 import HouseCard from '../components/HouseCardComponent.vue'
 import NavigationComponent from '../components/NavigationComponent.vue'
 import EmptyListComponent from '../components/EmptyListComponent.vue'
-import { onBeforeMount } from 'vue'
+import { computed, onBeforeMount } from 'vue'
 import { useHousesStore } from '../stores/houses-store'
 
 const housesStore = useHousesStore()
 const isPice = () => housesStore.sortBy === 'price'
+
+const searchCriteria = computed(
+  () => housesStore.searchCriteria !== '' && housesStore.quantityHousesFound !== 0
+)
+const emptyList = computed(() => housesStore.quantityHousesFound === 0)
 
 onBeforeMount(() => {
   housesStore.fetchHouses()
@@ -39,10 +44,8 @@ onBeforeMount(() => {
           >
         </div>
       </div>
-      <h2 v-if="housesStore.searchCriteria !== '' && housesStore.quantityHousesFound !== 0">
-        {{ housesStore.quantityHousesFound }} results found
-      </h2>
-      <EmptyListComponent v-if="housesStore.quantityHousesFound === 0"></EmptyListComponent>
+      <h2 v-if="searchCriteria">{{ housesStore.quantityHousesFound }} results found</h2>
+      <EmptyListComponent v-if="emptyList"></EmptyListComponent>
       <HouseCard :key="h" v-for="h in housesStore.sortedHouses" :house="h"></HouseCard>
     </div>
   </div>

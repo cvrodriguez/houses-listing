@@ -1,15 +1,16 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import NavigationComponent from './NavigationComponent.vue'
 
 const router = useRouter()
-const isDetail = () => router.currentRoute.value.name === 'detail-listing'
+const activeLink = ref('houses')
+
 const goBack = () => {
   router.go(-1)
 }
-
-const activeLink = ref('houses')
+const isDetail = computed(() => router.currentRoute.value.name === 'detail-listing')
+const isNotListing = computed(() => router.currentRoute.value.name != 'listing')
 
 function setActiveLink(link) {
   activeLink.value = link
@@ -19,13 +20,9 @@ function setActiveLink(link) {
 <template>
   <div class="container">
     <header class="margin-content">
-      <div :class="`mobile ${isDetail() ? '' : 'visible'}`">
-        <img src="../assets/ic_back_white@3x.png" @click="goBack" v-if="isDetail()" />
-        <img
-          src="../assets/ic_back_grey@3x.png"
-          @click="goBack"
-          v-else-if="router.currentRoute.value.name != 'listing'"
-        />
+      <div :class="`mobile ${isDetail ? '' : 'visible'}`">
+        <img src="../assets/ic_back_white@3x.png" @click="goBack" v-if="isDetail" />
+        <img src="../assets/ic_back_grey@3x.png" @click="goBack" v-else-if="isNotListing" />
         <div class="empty-image" v-else></div>
 
         <NavigationComponent></NavigationComponent>

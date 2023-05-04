@@ -8,7 +8,6 @@ const props = defineProps(['houseId', 'toggleGoBack'])
 const housesStore = useHousesStore()
 
 const goBack = () => {
-  // router.push({ path: `/detail-listing/${props.houseId}` })
   props.toggleGoBack()
 }
 
